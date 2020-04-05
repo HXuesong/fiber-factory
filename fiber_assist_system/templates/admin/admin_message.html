@@ -1,0 +1,74 @@
+{% extends 'user_info/user_base.html' %}
+{% load staticfiles %}
+{% block admin_message %}
+
+    <link rel="stylesheet" type="text/css" href={% static "new/css/founder_message.css" %}>
+
+    <script>
+        window.onload = function(){
+            var div = document.getElementById('message_ma_li');
+            div.setAttribute("class", "active");
+        }
+        function redict() {
+            var page = document.getElementById("page_input").value;
+            if(page==""){
+                page = 1;
+            }
+            window.open('?page='+page)
+        }
+    </script>
+    <script>
+        var is_show_1 = true;
+        var is_show_2 = false;
+    </script>
+
+
+    <div class="main" >
+        <div class="box">
+                <div class="main_wrap">
+                    <div class="content f-cb">
+                        <table>
+                            <tr style="background-color: #0d3771; font-size: 18px">
+                                <th>序列</th>
+                                <th>用户名</th>
+                                <th>申请</th>
+                                <th>来自</th>
+                                <th>时间</th>
+                            </tr>
+                            {% for team in team_temp_list %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ team.user.username }}</td>
+                                    <td>申请创建团队</td>
+                                    <td>申请创建{{ team.teamname }}团队</td>
+                                    <td>{{ team.teamdate|date:"Y-m-d H:i:s"  }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        <div class="t_footer">
+                            <div class="page">{{ team_temp_list.number }}/{{ team_temp_list.paginator.num_pages }}</div>
+                            <div class="page_nav">
+                                {% if team_temp_list.has_previous %}
+                                    <a  href="?page={{ team_temp_list.previous_page_number }}"><</a>
+                                {% else %}
+                                    <a  href="#" disabled="disabled"><</a>
+                                {% endif %}
+                                {% if team_temp_list.has_next %}
+                                    <a href="?page={{ team_temp_list.next_page_number }}">></a>
+                                {% else %}
+                                    <a href="#" disabled="disabled">></a>
+                                {% endif %}
+                            </div>
+                            <div class="go_nav">
+                                <form name="pageform">
+                                    跳转到 <input id ='page_input' type="text" placeholder="1"> <button  onclick="redict()">GO</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+{% endblock %}

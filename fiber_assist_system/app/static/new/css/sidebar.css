@@ -1,0 +1,104 @@
+.sidebar {
+  width: 215px;
+  margin-top: 1px;
+  float: left;
+  background-color: #01144f;
+  min-height: 500px;
+  position: relative;
+}
+.sidebar .profile {
+  padding: 14px 10px;
+}
+.sidebar .profile .head {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+}
+.sidebar .profile .info {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  font-size: 18px;
+  color: #FFFFFF;
+  font-family: "Microsoft YaHei", arial;
+}
+.sidebar .profile .info .authority {
+  margin-top: 15px;
+  font-size: 15px;
+}
+.sidebar .nav {
+  margin-top: 3px;
+  background: #01144f;
+  padding: 3px 10px;
+}
+.sidebar .nav .m_li {
+  width: 170px;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.sidebar .nav .m_li a {
+  color: #FFFFFF;
+}
+.sidebar .nav .m_li.active,
+.sidebar .nav .m_li:hover {
+  background: #000c3c;
+}
+.sidebar .nav .m_li.active a,
+.sidebar .nav .m_li:hover a {
+  color: #FFFFFF;
+}
+.sidebar .nav .m_li .i_set {
+  display: inline-block;
+  vertical-align: middle;
+}
+.sidebar .nav .m_li .i_arrow {
+  float: right;
+  margin-top: 8px;
+}
+.sidebar .nav .s_li {
+  margin-bottom: 2px;
+}
+.sidebar .nav .s_menu {
+  width: 160px;
+  float: right;
+  background: #000c3c;
+}
+.sidebar .nav .s_menu li {
+  text-align: center;
+  padding: 8px 0;
+  margin-top: 3px;
+}
+.sidebar .nav .s_menu li a {
+  font-size: 18px;
+  color: #FFFFFF;
+}
+.sidebar .nav .s_menu li.active,
+.sidebar .nav .s_menu li:hover {
+  background: url(../imgs/i_nav_active.png) no-repeat center center;
+  background-size: cover;
+}
+.sidebar .nav .s_menu li.active a,
+.sidebar .nav .s_menu li:hover a {
+  color: #ffffff;
+}
+.sidebar .logout {
+  position: absolute;
+  width: 100px;
+  left: 50%;
+  font-size: 18px;
+  bottom: 30px;
+  margin-left: -50px;
+}
+.sidebar .logout a {
+  vertical-align: middle;
+  color: #FFFFFF;
+}
+.sidebar .logout img {
+  vertical-align: middle;
+}

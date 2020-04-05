@@ -1,0 +1,66 @@
+{% extends "user_info/user_base.html" %}
+{% load staticfiles %}
+{% block breakpoint %}
+
+    <link rel="stylesheet" href="{% static "new/css/analysis.css" %}" />
+    <script src="{% static "new/js/echarts.js" %}"></script>
+
+    <script>
+        window.onload = function(){
+            var div = document.getElementById('bk');
+            div.setAttribute("class", "active");
+        }
+        var drawurl = '{% url 'getbreakpoint' %}'
+        var is_show_1 = false;
+        var is_show_2 = true;
+        oldStep = null;
+    </script>
+    <div class="main">
+        <div class="main_wrap">
+            <div class="content">
+                <div id = 'analysismat'>
+                    <div id = 'chooseattribute'>
+                        <span class="label_name" style="margin-left: 0">阶段</span>
+                        <div id="stageselectPart">
+                            <div id="stagesmenu">
+                                <input type="text" class="form" value="">
+                                <span id="stageselect"></span>
+                                <span class="iconRight"></span>
+                            </div>
+                            <span id="stageselectDetail" class="detail">
+                            <label>VAD塔线</label>
+                            <label>VAD烧结塔线</label>
+                            <label>拉伸塔线</label>
+                            <label>OVD塔线</label>
+                        </span>
+                        </div>
+                        <span class="label_name">设备</span>
+                        <div id="multiplePart">
+                            <div id="multiplemenu">
+                                <input type="text" class="form" value="">
+                                <span id="multiple"></span>
+                                <span class="iconRight"></span>
+                            </div>
+                            <span id="multipleDetail" class="detail">
+                        </span>
+                        </div>
+                        <input type = 'submit' id = 'submitbt' value='提交' style="margin-left: 140px;"/>
+                    </div>
+                    <div class="analysis_content" id = 'impactfactordiv'>
+                        <div id = 'staticdiv'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script type="text/javascript" src="{% static "new/js/jquery-3.2.1.min.js" %}" ></script>
+    <script src="{% static "new/js/nouislider.js" %}"></script>
+    <script src="{% static "new/js/rangeslider.js" %}"></script>
+    <script type="text/javascript" src={% static "new/js/breakpointjs.js" %} ></script>
+    <script type="text/javascript" src={% static "new/js/TreeGraph.js" %} ></script>
+    <script type="text/javascript" src={% static "new/js/correct_version.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+    <script src="{% static 'new/js/scrollBar.js' %}"></script>
+{% endblock %}

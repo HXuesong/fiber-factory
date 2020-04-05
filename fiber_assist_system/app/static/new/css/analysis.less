@@ -1,0 +1,705 @@
+@import "lib/reset";
+@import "lib/function";
+@import "widget/top";
+@import "widget/sidebar";
+@import "widget/nouislider";
+@import "widget/rangeslider";
+@import "widget/layout";
+html{
+  width: 100%;
+  height: 100%;
+}
+body{
+  background: #000c3c;
+  font-family: "Microsoft YaHei", arial;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .star{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .graph_btn{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .score_title{
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 17px;
+    margin: 10px 0;
+  }
+  .BarGraph{
+    display: none;
+    position: absolute;
+    border: 1px solid #333333;
+    width: 900px;
+    top: 23%;
+    padding: 15px;
+    padding-top: 30px;
+    min-height: 300px;
+    max-height: 700px;
+    overflow: auto;
+    background: #1c3599;
+    z-index: 100000;
+    .graph_result{
+      width: 100%;
+      text-align: center;
+      color: #FFFFFF;
+      font-size: 18px;
+      padding-bottom: 16px;
+    }
+    .ghostEle{
+      width: 674px;
+      height: 43px;
+      position: relative;
+      float: right;
+      span{
+        font-size: 14px;
+        color: #FFFFFF;
+        width: 105px;
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+    .p_bar{
+      width: 100%;
+      overflow: hidden;
+      display: inline-block;
+    }
+    .feature_title{
+      color: #FFFFFF;
+      font-size: 16px;
+      text-align: right;
+      width: 226px;
+      float: left;
+      height: 43px;
+      line-height: 43px;
+    }
+    .mini{
+      position: absolute;
+      text-align: right;
+      left:0;
+    }
+    .max{
+      position: absolute;
+      text-align: left;
+      left:569px;
+    }
+    .close_bar{
+      position: absolute;
+      font-size: 25px;
+      color: #FFFFFF;
+      left:886px;
+      top: 9px;
+      cursor: pointer;
+    }
+    .BarContainer{
+      width: 456px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      height: 40px;
+      position: relative;
+      border: 1px solid #FFFFFF;
+      .BarContext{
+        height: 100%;
+        position: absolute;
+        background: #000000;
+      }
+    }
+    .IntervalValue{
+      width: 458px;
+      height: 27px;
+      float: right;
+      margin-right: 108px;
+      line-height: 26px;
+      color: #FFFFFF;
+      font-size: 14px;
+      span{
+        float: left;
+      }
+      .intervalMin{
+        margin-top: 5px;
+      }
+      .intervalMax{
+        margin-top: -5px;
+      }
+    }
+  }
+  .ScoreContainer{
+    border: 1px solid #333333;
+    display: none;
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    top: 20%;
+    background: #1c3599;
+    z-index: 100000;
+    padding: 5px;
+    .close_score{
+      position: absolute;
+      font-size: 30px;
+      color: #FFFFFF;
+      left: 470px;
+      cursor: pointer;
+    }
+    #whole_score{
+      width: 80%;
+      height: 100px;
+      line-height: 100px;
+      margin: 0 auto;
+    }
+    #user_score{
+      width: 80%;
+      height: 100px;
+      line-height: 100px;
+      margin: 0 auto;
+    }
+  }
+}
+
+
+.form{
+  display: none;
+}
+.feature_range{
+  display: inline-block;
+  display: none;
+  width: 50%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.feature_name{
+  display: inline-block;
+  width: 50%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.tip_info{
+  position: absolute;
+  left: 0;
+  top:0;
+  font-size: 13px;
+  z-index: 100000;
+  user-select: none;
+  color: #f52180;
+  display: none;
+}
+.main {
+  .log_header {
+    font-size: 18px;
+    color: #999999;
+    .tab {
+      display: inline-block;
+      width: 135px;
+      height: 45px;
+      background: #01144f;
+      text-align: center;
+      line-height: 45px;
+      cursor: pointer;
+      border-top-left-radius: 7%;
+      border-top-right-radius: 7%;
+    }
+    .tab.active {
+      background: #42b2ff;
+      color: #ffffff;
+    }
+  }
+  .content {
+    #analysismat{
+      height:820px;
+      background-color:#000C3C;
+    }
+    #chooseformat {
+      width:100%;
+      height:8%;
+      float:left;
+      .tagbar{
+        border-radius: 7px 7px 0px 0px;
+        background-color:#01144F;
+        padding: 15px 51px;
+        font-size: 16px;
+        float:left;
+        margin-left:5px;
+        color: #adadad;
+        cursor: pointer;
+      }
+      .active{
+          background-color: #42B2FF;
+          color: #ffffff;
+          box-shadow:0 -1px 0 #b3e0ff;
+          text-shadow: 0 2px 0 #2795e1;
+      }
+    }
+    #tablediv{
+      width: 100%;
+      position: relative;
+      margin-top: 10px;
+      float: left;
+      .rules_table{
+        width: 100%;
+        background: #001446;
+        border: 1px solid #42B2FF;
+        color: #FFFFFF;
+        td{
+          line-height: 32px;
+          height: 60px;
+          img{
+            display: inline-block;
+            vertical-align: middle;
+          }
+          .rank_btn{
+            width: 20px;
+            margin-left: 5px;
+            user-select: none;
+            cursor: pointer;
+          }
+        }
+        *{
+          text-align: center;
+        }
+      }
+    }
+    #impactfactor {
+      border-radius: 7px 7px 0px 0px;
+      background-color:#01144F;
+      padding: 15px 51px;
+      font-size: 16px;
+      float:left;
+      margin-left:5px;
+      color:#adadad;
+    }
+
+    #impactfactor a{
+      display: inline-block;
+      text-decoration:none;
+      color:darkgrey;
+      font-size:20px;
+      width: 100%;
+      text-align: center;
+      font-family: "微软雅黑";
+    }
+
+    #chooseattribute {
+      background-color:#01144F;
+      width:100%;
+      height: 56px;
+      float:left;
+      font-size:20px;
+      color:white;
+      font-family: "微软雅黑";
+      position: relative;
+      z-index: 10000;
+      margin-bottom: 10px;
+      label{
+        cursor: pointer;
+      }
+    }
+    .label_name{
+      float:left;
+      margin-left:30px;
+      font-size: 14px;
+      line-height: 56px;
+    }
+    /*SUN的修改部分*/
+    #stageselectPart{
+      float: left;
+      margin-left:20px;
+      margin-top:12px;
+      cursor: pointer;
+      position: relative;
+    }
+    #stageselect {
+      float:left;
+      width:220px;
+      height:30px;
+      line-height: 30px;
+      text-indent: 5px;
+      font-size:14px;
+      background-color: #fff;
+      color: #000;
+      font-family: "微软雅黑";
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      border-bottom: 1px solid #949494;
+    }
+    .iconRight{
+      width: 29px;
+      height: 30px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-left: 1px solid #949494;
+      background: #fff url(../imgs/iconRight.gif) no-repeat center;
+    }
+    .iconRight.active{
+      width: 29px;
+      height: 30px;
+      float: right;
+      border-left: 1px solid #949494;
+      background:#fff url(../imgs/iconBottom.gif) no-repeat center;
+    }
+
+    #stageselectDetail{
+      position: absolute;
+      left: 0;
+      top: 31px;
+      width:180px;
+      font-size:14px;
+      padding:5px;
+      background-color: #fff;
+      color: #000;
+      font-family: "微软雅黑";
+      display: none;
+      label{
+        display: block;
+        margin: 5px auto;
+        width: 100%;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+    }
+    input[type="radio"]{
+      /*position: absolute;
+      left: -9999em;*/
+      display: none;
+    }
+    label{
+      display: inline-block;
+      width: 86px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #333;
+      font-size: 12px;
+      margin-bottom: 8px;
+      margin-right: 8px;
+      background-color:#e1e1e1;
+      user-select: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    label.active{
+      /*display: inline-block;
+     width: 60px;
+     height: 0px;
+     text-align: center;*/
+      color: #fff;
+      text-shadow: rgb(39, 149, 225) 0px 2px 0px;
+      box-shadow: rgb(179, 224, 255) 0px -1px 0px;
+      /*  margin-bottom: 8px;
+        margin-right: 7px;*/
+      background-color:#42b2ff ;
+    }
+
+    /*sun的修改部分*/
+    #multiplePart{
+      float:left;
+      margin-left:20px;
+      margin-top:12px;
+      width:300px;
+      height:30px;
+      position: relative;
+      cursor: pointer;
+    }
+    #multiple{
+      /*float:left;*/
+      position: absolute;
+      top: 0;
+      left: 0;
+      width:270px;
+      height: 30px;
+      line-height: 30px;
+      text-indent: 5px;
+      font-size:14px;
+      background-color: #fff;
+      color: #000;
+      font-family: "微软雅黑";
+      border-bottom: 1px solid #949494;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #multipleDetail{
+      position: absolute;
+      left: 0;
+      top: 31px;
+      width:260px;
+      padding:10px;
+      padding-bottom: 5px;
+      padding-right: 0;
+      background-color: #fff;
+      color: #000;
+      font-family: "微软雅黑";
+      display: none;
+      label{
+        width: 78px;
+      }
+    }
+    input[type="checkbox"]{
+      /*position: absolute;
+      left: -9999em;*/
+      display: none;
+    }
+    #featuresPart{
+      float:left;
+      margin-left:20px;
+      margin-top:12px;
+      width:284px;
+      height:30px;
+      position: relative;
+    }
+    #features{
+      float:left;
+      width:254px;
+      height:30px;
+      font-size:14px;
+      font-family: "微软雅黑";
+      line-height: 30px;
+      text-indent: 5px;
+      cursor: pointer;
+      background-color: #fff;
+      color: #000;
+      border-bottom: 1px solid #949494;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #featuresDetail{
+      position: absolute;
+      left: 0;
+      top: 31px;
+      width:238px;
+      font-size:14px;
+      padding:8px;
+      padding-bottom: 5px;
+      padding-right:0;
+      background-color: #fff;
+      color: #000;
+      font-family: "微软雅黑";
+      display: none;
+      max-height: 484px;
+      overflow: hidden;
+      label{
+        width: 70px;
+      }
+    }
+    /*SUN的修改部分*/
+    #submitattr {
+      float:left;
+      margin-left:40px;
+      margin-top:11px;
+      width:70px;
+      height:32px;
+      font-size:15px;
+      font-family: "微软雅黑";
+      background-color:#42B2FF;
+      color:white;
+      border-radius: 0;
+      cursor: pointer;
+      border: none;
+      border-top: 1px solid #b3e0ff;
+    }
+    .analysis_content{
+      display: none;
+      position: relative;
+      float:left;
+      height:93%;
+      width:100%;
+      background-color:#01144F;
+      margin-top:10px;
+    }
+
+    #changepagepart {
+      float:left;
+      height:15%;
+      width:100%;
+      background-color:#01144F;
+    }
+
+    #go {
+      float:right;
+      width:36px;
+      height:36px;
+      margin-right:50px;
+      margin-top:20px;
+      background-color:#42B2FF;
+      color:white;
+      border: none;
+      font-family: "微软雅黑";
+    }
+
+    #choosepageinput {
+      float:right;
+      margin-right:20px;
+      margin-top:19px;
+      width:70px;
+      height:32px;
+      font-size:18px;
+      text-align:right;
+    }
+
+    #choosepagefont {
+      float:right;
+      margin-right:20px;
+      margin-top:24px;
+      font-size:18px;
+      font-family: "微软雅黑";
+      color:white;
+    }
+
+    #backward {
+      float:right;
+      width:36px;
+      height:36px;
+      margin-right:60px;
+      margin-top:20px;
+      background-color:#42B2FF;
+      color:white;
+      font-size:20px;
+      border: none;
+    }
+
+    #forward {
+      float:right;
+      width:36px;
+      height:36px;
+      margin-right:20px;
+      margin-top:20px;
+      background-color:#42B2FF;
+      border: none;
+      color:white;
+      font-size:20px;
+    }
+
+    #pagefont {
+      float:right;
+      margin-right:20px;
+      margin-top:24px;
+      font-size:18px;
+      font-family: "微软雅黑";
+      color:white;
+    }
+    #impactfactordiv{
+      background-color:#000C3C;
+    }
+    #staticdiv {
+      float:left;
+      height:97%;
+      width:69%;
+      margin-top:13px;
+    }
+    #static {
+      float:left;
+      height:100%;
+      width:100%;
+    }
+
+    #parameterdiv {
+      float: right;
+      height:100%;
+      width:335px;
+      cursor: pointer;
+    }
+
+    .parameter {
+      float: left;
+      height:40px;
+      width:95%;
+      margin-left:8px;
+      background-color:#01144F;
+      margin-bottom: 2px;
+      color:white;
+      font-size:16px;
+      font-family: "微软雅黑";
+      span{
+        line-height: 40px;
+      }
+    }
+
+    .right {
+      float:right;
+      margin-right:8px;
+      margin-top:13px;
+      height:14px;
+      width:16px;
+    }
+
+    .button {
+      float:right;
+      margin-right:8px;
+      margin-top:13px;
+      height:18px;
+      width:20px;
+    }
+
+    .slide {
+      float:left;
+      height:20%;
+      width:95%;
+      margin-left:8px;
+      margin-top:0.7px;
+      margin-bottom: 8px;
+      background-color:#01144F;
+    }
+
+    .feature_label{
+      float: left;
+      display: inline-block;
+      width: 80%;
+      margin-left: 12px;
+      line-height: 40px;
+      font-size: 13px;
+      user-select: none;
+      .feature_range{
+        float: right;
+      }
+      .feature_name{
+        float: left;
+      }
+    }
+    /* 提交按钮 */
+    .submit-btn {
+      width: 18%;
+      padding: 2.5% 3%;
+      float: left;
+      margin-left: 39%;
+      margin-top: 3%;
+      cursor: pointer;
+      user-select: none;
+      font-size: 14px;
+      text-align: center;
+      color: #f2f9fe;
+      text-shadow: 1px 1px 0 #208eda;
+      background: #42b2ff;
+      border-top: 1px solid #b3e0ff;
+    }
+    #pathMsg{
+      top: 90%;
+      left:30%;
+      position: absolute;
+    }
+    #declare{
+      top: 100px;
+      right: 100px;
+      position: absolute;
+      font-size: 10px;
+    }
+    #choosefactor{
+      text-align: center;
+    }
+  }
+}

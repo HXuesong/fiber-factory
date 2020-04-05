@@ -1,0 +1,60 @@
+<!-- 基页面继承 -->
+{% extends 'user_info/user_base.html' %}
+<!-- 加载静态文件 -->
+{% load staticfiles %}
+<!-- 模块调用 -->
+{% block admin_sys_message %}
+
+    <link rel="stylesheet" type="text/css" href={% static "new/css/sys_manage.css" %}>
+    
+    <script>
+        window.onload = function(){
+            var div = document.getElementById('sys_ma_li');
+            div.setAttribute("class", "active");
+        }
+    </script>
+    <script>
+        var is_show_1 = true;
+        var is_show_2 = false;
+    </script>
+
+    <!-- 内容区 -->
+    <div class="main" id="log_container">
+        <div class="main_wrap">
+
+            <!-- 大标题 -->
+            <div class="log_header f-cb">
+                {#                <div class="mysql_tab tab" v-bind:class="{active: log_mysql_active}" @click="switch_log_tab(1)">Mysql</div>#}
+                <div class="hive_tab tab"  v-bind:class="{active: log_mysql_active}" @click="switch_log_tab(2)">Hive日志</div>
+            </div>
+            <!-- 日志信息内容区 -->
+            <div class="log_content">
+                <h5>日志信息： <a href="" class="pause"></a></h5>
+                <div class="box">
+                    <div v-show="log_mysql_active" class="content hive_content">
+                            {% for info in hive_log %}
+                                {{ info }}<br>
+                            {% endfor %}
+                    </div>
+                </div>
+                {#                <div v-show="log_mysql_active" class="content mysql_content">#}
+                {#                    {% for info in mysql_logs %}#}
+                {#                        {{ info }}<br>#}
+                {#                    {% endfor %}#}
+                {#                </div>#}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var mysql_path = "{% url 'get_mysql_logs' %}";
+        var hive_path = "{% url 'get_hive_logs' %}";
+    </script>
+
+    <!-- 引入外部JS文件 -->
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script src={% static "new/js/log_container.js" %}></script>
+    <script src={% static "new/js/jquery-2.1.4.min.js" %}></script>
+    <script src={% static "new/js/Load_Info.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+{%endblock %}

@@ -1,0 +1,87 @@
+{% extends 'user_info/user_base.html' %}
+{% load staticfiles %}
+{% block userlogininfo %}
+
+
+    <link rel="stylesheet" type="text/css" href={% static "new/css/login_info.css" %}>
+    <script src={% static "new/js/lib/Vue.min.js" %}></script>
+    
+    <script>
+        var is_show_1 = false;
+        var is_show_2 = false;
+    </script>
+
+
+    <div class="main" id="user_info_container">
+        <div class="main_wrap">
+            <div class="log_header f-cb">
+                <div class="tab " onclick="location='{% url 'user_info' %}'">
+                    <span class="message"></span>
+                    <span class="inner">基本信息</span>
+                </div>
+                <div class="tab active" onclick="location='{% url 'user_login_info' %}'">
+                    <span class="peopleLogo"></span>
+                    <span class="inner">登陆信息</span>
+                </div>
+            </div>
+            <div class="content f-cb">
+                <div class="head-container" >
+                    <div class="head"></div>
+{#                    <a href="javascript:void(0)" class="change_head" @click="open_set_head">更换头像</a>#}
+                </div>
+                <div class="info">
+                    <div class="input_group">
+                        <div class="input_type_1">
+                            <h6 class="col_name">登陆IP：</h6>
+                            <input class="col_value tab1" placeholder="" type="text" readonly value="{{ user_log_latest.login_ip }}">
+                        </div>
+                        <div class="input_type_1">
+                            <h6 class="col_name">上次登陆IP：</h6>
+                            <input class="col_value tab2" placeholder="" type="text" readonly value="{{ user_log_last.login_ip }}">
+                        </div>
+                    </div>
+
+                    <div class="input_group">
+                        <div class="input_type_1">
+                            <h6 class="col_name">登陆时间：</h6>
+                            <input class="col_value tab3" placeholder="" type="text" readonly value="{{ user_log_latest.login_date|date:"Y-m-d H:i" }}">
+                        </div>
+                        <div class="input_type_1">
+                            <h6 class="col_name">上次登陆时间：</h6>
+                            <input class="col_value" placeholder="" type="text" readonly value="{{ user_log_last.login_date|date:"Y-m-d H:i" }}">
+                        </div>
+                    </div>
+
+                    <div class="input_group">
+                        <div class="input_type_1">
+                            <h6 class="col_name">使用的系统：</h6>
+                            <input class="col_value" placeholder="" type="text" readonly value="{{ user_log_latest.login_system }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--修改头像-->
+            <div v-show="set_head" class="change_head_container">
+                <div class="wrapper">
+                    <h5 class="">选择您感兴趣的头像</h5>
+                    <div class="head_list">
+                        <ul class="f-cb">
+                            <template v-for="(item, index) in head_icons">
+                                <li v-bind:class="{active: head_flags[index]}" v-bind:style="{'background-image': 'url(static/new/imgs/heads/'+item+')'}" @click="switch_head(index)"></li>
+                            </template>
+                        </ul>
+                    </div>
+                    <div>
+                        <button @click="close_set_head" class="cancel_btn btn">取消</button>
+                        <button @click="submit_head" class="ok_btn btn">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src={% static "new/js/user_info.js" %}></script>
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+{% endblock %}

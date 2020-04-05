@@ -1,0 +1,82 @@
+{% extends 'user_info/user_base.html' %}
+{% load staticfiles %}
+{% block user_team_manager %}
+
+
+    <link rel="stylesheet" type="text/css" href={% static "new/css/founder_manage_admin.css" %}>
+    
+    <script>
+        window.onload = function(){
+            var div = document.getElementById('team_ma_li');
+            div.setAttribute("class", "active");
+        }
+        function redict() {
+            var page = document.getElementById("page_input").value;
+            if(page==""){
+                page = 1;
+            }
+            window.open('?page='+page)
+        }
+    </script>
+    <script>
+        var is_show_1 = true;
+        var is_show_2 = false;
+    </script>
+
+
+    <div class="main">
+        <div class="main_wrap">
+            <div class="log_header f-cb">
+                <div class="tab active" onclick="window.location.href='{% url 'user_get_manager_list' %}'" >管理员列表</div>
+                <div class="tab"  onclick="window.location.href='{% url 'user_get_team_user_list' %}'">所有成员列表</div>
+            </div>
+            <div v-show="content_active" class="content f-cb">
+                <table>
+                    <tr>
+                        <th>序列</th>
+                        <th>用户名</th>
+                        <th>身份</th>
+                        <th>所属团队</th>
+                        <th>上次登陆时间</th>
+                        <th>上次登陆Ip</th>
+                        <th>上次登陆系统设备</th>
+
+                    </tr>
+                    {% for admin in teamadminlist %}
+                        <tr>
+                            <td>{{ forloop.counter}}</td>
+                            <td>{{ admin.user.username }}</td>
+                            <td>{{ admin.ut_type }}</td>
+                            <td>{{ admin.team.teamname }}</td>
+                            <td>2017-08-22 12:51</td>
+                            <td>172.18.76.70</td>
+                            <td>Windows 10</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="t_footer">
+                    <div class="page">{{ teamadminlist.number }}/{{ teamadminlist.paginator.num_pages }}</div>
+                    <div class="page_nav">
+                        {% if teamadminlist.has_previous %}
+                            <a  href="?page={{ teamadminlist.previous_page_number }}"><</a>
+                        {% else %}
+                            <a  href="#" disabled="disabled"><</a>
+                        {% endif %}
+                        {% if teamadminlist.has_next %}
+                            <a href="?page={{ teamadminlist.next_page_number }}">></a>
+                        {% else %}
+                            <a href="#" disabled="disabled">></a>
+                        {% endif %}
+                    </div>
+                    <div class="go_nav">
+                        <form name="pageform">
+                            跳转到 <input id ='page_input' type="text" placeholder="1"> <button  onclick="redict()">GO</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+{% endblock %}

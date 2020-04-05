@@ -1,0 +1,265 @@
+{% extends "user_info/user_base.html" %}
+{% load staticfiles %}
+{% block decison_page %}
+
+    <link rel="stylesheet" href="{% static "new/css/analysis.css" %}" />
+    <link rel="stylesheet" href="{% static "new/css/scrollBar.css" %}" />
+    <!-- <link rel="stylesheet" href="{% static "new/css/sidebar.css" %}" /> -->
+    <script src="{% static "new/js/echarts.js" %}"></script>
+
+    <title></title>
+    <script>
+        var table_data = {{ table_data|safe }}
+            rule_draw_list = []
+        gs=[]
+        window.onload = function(){
+            var div = document.getElementById('{{ target_label }}');
+            div.setAttribute("class", "active");
+        }
+        var drawurl = '{% url 'mdf_pic' %}'
+        oldStep = null;
+        score_url = '{% url 'mark_score' %}'
+
+        var is_show_1 = false;
+        var is_show_2 = true;
+        featuresLink = '{% url "mdf_get_feas" %}'
+        var PredictingTarget = '{{ target_label }}';
+        tag_selected = {{ tag_name }};
+
+    </script>
+
+
+    <div class="main">
+        <div class="main_wrap">
+            <input type="hidden" id="znonde" value="{{ tree_data }}">
+            <div class="content">
+                <div id = 'analysismat'>
+
+                    <form method="post" action="{% url 'admin_analy_feas_min_max' %}">
+                        <div id = 'chooseattribute'>
+                            <span class="label_name" style="margin-left: 0">阶段</span>
+                            <div id="stageselectPart">
+                                <div id="stagesmenu">
+                                    <input type="text" name ="step_name" class="form" value="{{ step_name }}">
+                                    <span id="stageselect">{{ step_name }}</span>
+                                    <span class="iconRight"></span>
+                                </div>
+                                <span id="stageselectDetail" class="detail">
+                            {% if step_name == 'VAD塔线' %}
+                                <label class="active">VAD塔线</label>
+                                <label>VAD烧结塔线</label>
+                                <label>拉伸塔线</label>
+                                <label>OVD塔线</label>
+                            {% elif step_name == 'VAD烧结塔线' %}
+                                <label >VAD塔线</label>
+                                <label class="active">VAD烧结塔线</label>
+                                <label>拉伸塔线</label>
+                                <label>OVD塔线</label>
+                            {% elif step_name == '拉伸塔线' %}
+                                <label >VAD塔线</label>
+                                <label >VAD烧结塔线</label>
+                                <label class="active">拉伸塔线</label>
+                                <label>OVD塔线</label>
+                            {% elif step_name == 'OVD塔线' %}
+                                <label >VAD塔线</label>
+                                <label >VAD烧结塔线</label>
+                                <label >拉伸塔线</label>
+                                <label class="active">OVD塔线</label>
+                            {% else %}
+                                <label >VAD塔线</label>
+                                <label >VAD烧结塔线</label>
+                                <label >拉伸塔线</label>
+                                <label>OVD塔线</label>
+                            {% endif %}
+
+                        </span>
+                            </div>
+                            <span class="label_name">设备</span>
+                            <div id="multiplePart">
+                                <div id="multiplemenu">
+                                    <input type="text" name="choose_name" class="form" value="{{ ori_choose_name }} ">
+                                    <span id="multiple">{{ ori_choose_name }}</span>
+                                    <span class="iconRight"></span>
+                                </div>
+                                <span id="multipleDetail" class="detail">
+                            {% for choose_name in equip_list %}
+                                {% if choose_name in choose_name_list %}
+                                    <label class="active">{{ choose_name }}</label>
+                                {% else %}
+                                    <label >{{ choose_name }}</label>
+                                {% endif %}
+                            {% endfor %}
+
+                        </span>
+                            </div>
+                            <span class = "label_name" style="margin-left: 140px;">特征</span>
+                            <div id="featuresPart">
+                                <div id="featuresmenu">
+                                    <input type="text" class="form" name="choose_feas" value="{{ori_choose_feas }}">
+                                    <span id="features">{{ ori_choose_feas }}</span>
+                                    <span class="iconRight"></span>
+                                </div>
+                                <span id="featuresDetail" class="detail">
+                            {% for item in fea_list %}
+                                {% if item in choose_feas_list %}
+                                    <label class="active">{{ item }}</label>
+                                {% else %}
+                                    <label >{{ item }}</label>
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                            </div>
+                            <input type="hidden" name="target_label" value="{{ target_label }}">
+                            <input type="hidden" class="tag_input" name="tag_name" value="" >
+                            <input type = 'submit' id = 'submitattr' value='提交' />
+                        </div>
+                    </form>
+                    <div id = 'chooseformat'>
+                        <div class="tagbar" d_index="0" style="margin-left: 0">
+                            表格
+                        </div>
+                        <div class="tagbar" d_index="1">
+                            树状图
+                        </div>
+                        <div class="tagbar" d_index="2">
+                            影响因子分析
+                        </div>
+                    </div>
+                    <div class="analysis_content" id = 'tablediv'>
+                        <table class="rules_table" border="5">
+
+                        </table>
+{#                        <input type="hidden" id="fea_range" value="{{ feas_data }}">#}
+{#                        <table id='tablepart' border='1' cellspacing='0' bordercolor="#42b2ff">#}
+{#                            {% if keys_list %}#}
+{#                                <tr>#}
+{#                                    <td>规则</td>#}
+{#                                    {% for key in keys_list %}#}
+{#                                        {% if key == "rulestr"  %}#}
+{#                                            <td style="display: none">{{ key }}</td>#}
+{#                                        {% elif key == "我的评分" %}#}
+{#                                            <td style="display: none">{{ key }}</td>#}
+{#                                        {% elif key == "用户总体评分" %}#}
+{#                                            <td style="display: none">{{ key }}</td>#}
+{#                                            <td>查看评分</td>#}
+{#                                        {% else %}#}
+{#                                            <td>{{ key }}</td>#}
+{#                                        {% endif %}#}
+{#                                    {% endfor %}#}
+{##}
+{#                                    <td style="display: none">规则字符串</td>#}
+{#                                    <td>条状图</td>#}
+{#                                </tr>#}
+{#                                {% for item in new_rule_data %}#}
+{#                                    {% if forloop.counter <= 11 %}#}
+{#                                        <tr>#}
+{#                                            <td>{{ forloop.counter }}</td>#}
+{#                                            {% for k,v in item.items %}#}
+{#                                                {% if k == "rulestr"  %}#}
+{#                                                    <td style="display: none" class="rule_str">{{ v }}</td>#}
+{#                                                {% elif k == "用户总体评分" %}#}
+{#                                                    <td style="display: none" class="all_score">{{ v }}</td>#}
+{#                                                    <td>#}
+{#                                                        {% if v %}#}
+{#                                                            <span class="star_num">{{ v }}</span> x <img src="{% static 'new/imgs/star.png' %}" alt="" class="star">#}
+{#                                                        {% else %}#}
+{#                                                            <span class="star_num">--</span> x <img src="{% static 'new/imgs/star.png' %}" alt="" class="star">#}
+{#                                                        {% endif %}#}
+{#                                                    </td>#}
+{#                                                {% elif k == "我的评分" %}#}
+{#                                                    <td style="display: none" class="my_score">{{ v }}</td>#}
+{#                                                {% else %}#}
+{#                                                    <td>{{ v }}</td>#}
+{#                                                {% endif %}#}
+{##}
+{#                                            {% endfor %}#}
+                                            {#                                        <td>#}
+                                            {#                                            4.5<img src="{% static 'new/imgs/star.png' %}" alt="" class="star">#}
+                                            {#                                        </td>#}
+{#                                            <td>#}
+{#                                                <img no="{{ forloop.counter0 }}" src="{% static 'new/imgs/graph.png' %}" alt=""  class="graph_btn">#}
+{#                                            </td>#}
+{#                                        </tr>#}
+{#                                    {% endif %}#}
+{#                                {% endfor %}#}
+{#                            {% else %}#}
+{##}
+{#                            {% endif %}#}
+{##}
+{#                        </table>#}
+                    </div>
+                    <div class="analysis_content" id = 'treediv'>
+                        <canvas id="canvastree"></canvas>
+
+                    </div>
+                    <div class="analysis_content" id = 'impactfactordiv'>
+                        <div id = 'staticdiv' style="color: #fbfdfe; font-size: 36px">
+                            <!--<img src = 'img/static.png'  id = 'static'/>-->
+                        </div>
+                        {#                    <div id = 'parameterdiv'>#}
+                        {#                        {% for key,value in feas_data.items %}#}
+                        {#                            <div class = 'parameter' tag = "p_{{ forloop.counter }}">#}
+                        {#						<span id = 'temperaturefont'>#}
+                        {#                            {{ key }}#}
+                        {#						</span>#}
+                        {#                            <img src = '{% static 'new/imgs/right.png' %}'  class = 'right'/>#}
+                        {#                            <img src = "{% static 'new/imgs/button.png' %}"  class = 'button'/>#}
+                        {#                        </div>#}
+                        {#                        <div class = 'slide' tag = "p_{{ forloop.counter }}">#}
+                        {#                            <span class="limit" style="display: none">{{ value }}</span>#}
+                        {#                            <div class="range-slider"></div>#}
+                        {#                        </div>#}
+                        {#                        {% endfor %}#}
+                        {#                        <div class="submit-btn">#}
+                        {#                            分析#}
+                        {#                        </div>#}
+                        {#                    </div>#}
+
+                        <div id = 'parameterdiv'>
+                            {% for key,value in feas_data.items %}
+                                <div class = 'parameter' tag = {{ forloop.counter0 }}>
+						<span class="feature_label">
+							<span class="feature_name">{{ key }}</span>
+                            <span class="feature_range"></span>
+						</span>
+                                    <img src = '{% static 'new/imgs/right.png' %}'  class = 'right'/>
+                                    <img src = "{% static 'new/imgs/button.png' %}"  class = 'button'/>
+                                </div>
+                                <div class = 'slide' tag = {{ forloop.counter0 }}>
+                                    <span class="limit" style="display: none">{{ value }}</span>
+                                    <div class="range-slider"></div>
+                                </div>
+                            {% endfor %}
+                            <div class="submit-btn">
+                                分析
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var zNodes =  document.getElementById('znonde').value;
+        zNodes = JSON.parse(zNodes);
+        oldStep = '{{ tag_name }}';
+
+            tree_path = {{ tree_path|safe }}
+        tree_rule='{{ tree_rule|safe }}'
+    </script>
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script type="text/javascript" src="{% static "new/js/jquery-3.2.1.min.js" %}" ></script>
+    <script src="{% static "new/js/nouislider.js" %}"></script>
+    <script src="{% static "new/js/rangeslider.js" %}"></script>
+    <script type="text/javascript" src={% static "new/js/Analysis.js" %} ></script>
+    <script type="text/javascript" src={% static "new/js/TreeGraph.js" %} ></script>
+    <script type="text/javascript" src={% static "new/js/correct_version.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+    <script src={% static "new/js/jquery.min.js" %}></script>
+    <script src={% static "new/js/raty.js" %}></script>
+    <script src={% static "new/js/jquery.raty.min.js" %}></script>
+    <script src={% static "new/js/graph.js" %}></script>
+    <script src="{% static 'new/js/scrollBar.js' %}"></script>
+    <script src="{% static 'new/js/rule_table.js' %}"></script>
+{% endblock %}

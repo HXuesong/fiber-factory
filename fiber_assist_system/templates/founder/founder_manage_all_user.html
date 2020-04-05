@@ -1,0 +1,91 @@
+{% extends 'user_info/user_base.html' %}
+{% load staticfiles %}
+{% block founder_team_all_user %}
+
+
+    <link rel="stylesheet" type="text/css" href={% static "new/css/founder_manage_all_user.css" %}>
+    
+    <script>
+        window.onload = function(){
+            var div = document.getElementById('team_ma_li');
+            div.setAttribute("class", "active");
+        }
+        function redict() {
+            var page = document.getElementById("page_input").value;
+            if(page==""){
+                page = 1;
+            }
+            window.open('?page='+page)
+        }
+    </script>
+    <script>
+        var is_show_1 = true;
+        var is_show_2 = false;
+    </script>
+
+
+
+
+    <div class="main">
+        <div class="main_wrap">
+            <div class="log_header f-cb">
+                <div class="tab " onclick="window.location.href='{% url 'founder_get_join_list' %}'">加入审核</div>
+                <div class="tab"  onclick="window.location.href='{% url 'founder_get_manager_list' %}'" >管理员列表</div>
+                <div class="tab active" onclick="window.location.href='{% url 'founder_get_team_user_list' %}'" >所有成员列表</div>
+            </div>
+            <div v-show="content_active" class="content f-cb">
+                <table>
+                    <tr>
+                        <th>序列</th>
+                        <th>用户名</th>
+                        <th>身份</th>
+                        <th>所属团队</th>
+                        <th>上次登陆时间</th>
+                        <th>上次登陆Ip</th>
+                        <th>上次登陆系统设备</th>
+                        <th>操作</th>
+                    </tr>
+                    {% for user in memberlist %}
+                        <tr>
+                            <td>{{ forloop.counter}}</td>
+                            <td>{{ user.user_name }}</td>
+                            <td>{{ user.user_type }}</td>
+                            <td>{{ user.team_name }}</td>
+                            <td>{{ user.login_date|date:"Y-m-d H:i:s"  }}</td>
+                            <td>{{ user.login_ip }}</td>
+                            <td>{{ user.login_system }}</td>
+                            <td>
+                                {% if user.user_type == '成员' %}
+                                    <a href="{% url 'founder_change_user_type' %}?flag=gly&userid={{ user.user_id }}&teamid={{ request.session.team_id }}" class="agree_btn">任命</a>
+                                    <a href="" class="refuse_btn">移除</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="t_footer">
+                    <div class="page">{{ memberlist.number }}/{{ memberlist.paginator.num_pages }}</div>
+                    <div class="page_nav">
+                        {% if memberlist.has_previous %}
+                            <a  href="?page={{ memberlist.previous_page_number }}"><</a>
+                        {% else %}
+                            <a  href="#" disabled="disabled"><</a>
+                        {% endif %}
+                        {% if memberlist.has_next %}
+                            <a href="?page={{ memberlist.next_page_number }}">></a>
+                        {% else %}
+                            <a href="#" disabled="disabled">></a>
+                        {% endif %}
+                    </div>
+                    <div class="go_nav">
+                        <form name="pageform">
+                            跳转到 <input id ='page_input' type="text" placeholder="1"> <button  onclick="redict()">GO</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+{% endblock %}

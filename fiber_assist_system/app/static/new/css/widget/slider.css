@@ -1,0 +1,91 @@
+#impactfactordiv .SliderBarContainer {
+  width: 100%;
+  height: 90%;
+  margin-top: 4.97%;
+}
+#impactfactordiv .SliderBarContainer > div {
+  float: left;
+}
+#impactfactordiv .SliderBarContainer .limit {
+  display: inline-block;
+  width: 16%;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  user-select: none;
+}
+#impactfactordiv .SliderBarContainer .limitcontent {
+  display: none;
+}
+#impactfactordiv .SliderBarContainer .SliderBar {
+  width: 64%;
+  height: 16%;
+  background: #ffffff;
+  box-shadow: inset 0 0 3px #333;
+  border-radius: 10px;
+  position: relative;
+  margin: 0 2%;
+}
+#impactfactordiv .SliderBarContainer .SliderBar > div {
+  background: linear-gradient(#2f9eea, #41b1fe);
+}
+#impactfactordiv .SliderBarContainer .SliderBar .SliderDot {
+  width: 11.8%;
+  height: 160%;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: inset 0 0 2px #1b4e71;
+  top: -30%;
+  user-select: none;
+}
+#impactfactordiv .SliderBarContainer .SliderBar .SliderConnection {
+  height: 100%;
+  position: absolute;
+  left: 5.3%;
+  width: 89.5%;
+}
+#impactfactordiv .SliderBarContainer .SliderBar .leftDot {
+  left: -5.9%;
+  z-index: 99;
+}
+#impactfactordiv .SliderBarContainer .SliderBar .rightDot {
+  left: 94.1%;
+  z-index: 100;
+}
+#impactfactordiv .SliderBarContainer .limitInput {
+  width: 15%;
+  border: none;
+  padding: 1.5%;
+  font-size: 13px;
+  margin-top: 3.5%;
+  box-shadow: inset 0 0 2px #333333;
+}
+#impactfactordiv .SliderBarContainer .applyBtn {
+  width: 25%;
+  padding: 1%;
+  float: left;
+  margin-left: 35.5%;
+  padding-bottom: 2%;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  color: #f2f9fe;
+  text-shadow: 1px 1px 0 #208eda;
+  background: #42b2ff;
+  border-top: 1px solid #b3e0ff;
+}
+#impactfactordiv .SliderBarContainer .lowerInput {
+  float: left;
+  margin-left: 3%;
+}
+#impactfactordiv .SliderBarContainer .upperInput {
+  float: right;
+  margin-right: 3%;
+}
+#impactfactordiv .SliderBarContainer .lowerLimit {
+  float: left;
+}
+#impactfactordiv .SliderBarContainer .upperLimit {
+  float: right;
+}

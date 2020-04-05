@@ -1,0 +1,12 @@
+project_name = mysql_syn
+zip_file_path = C:\\Users\\Administrator\\Desktop\\start-syn.zip
+flow_name = start-syn
+job_id=start-syn
+cronExpr=0 0 0/2 ? * *
+host=172.23.27.203
+port=3306
+user=root
+passwd=123456
+db=azkaban
+base = https://172.23.27.203:8443
+auto_description=create mysql_syn project!

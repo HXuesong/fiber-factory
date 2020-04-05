@@ -1,0 +1,105 @@
+{% extends "user_info/user_base.html" %}
+{% load staticfiles %}
+{% block data_manage %}
+
+
+    <link rel="stylesheet" type="text/css" href={% static "new/css/data_manage.css" %}>
+    
+    <script>
+        window.onload = function(){
+            var div = document.getElementById('data_ma_li');
+            div.setAttribute("class", "active");
+        }
+        var is_show_1 = true;
+        var is_show_2 = false;
+        function redict() {
+            var page = document.getElementById("page_input").value;
+            if(page==""){
+                page = 1;
+            }
+            window.open('?page='+page)
+        }
+    </script>
+    <div class="main" id="team_manage_container">
+        <div class="main_wrap">
+            <div class="content f-cb">
+
+                <br>
+                <div >
+                    <p style="font-size: 20px;text-align:center;color: white;">大表信息</p>
+                </div>
+                <br>
+                <table >
+                    <tr>
+                        {% for name in f_table_name %}
+                            <th>{{ name }}</th>
+                        {% endfor %}
+                        <th>操作</th>
+                    </tr>
+                    <tr>
+                        {% for value in f_table %}
+                            <th>{{ value }}</th>
+                        {% endfor %}
+                        <th>
+                            {% if flag %}
+                                <div style="background-color: #42B2FF; width: 120px;height: 25px;margin:0 auto; font-size: 15px; line-height:25px;"><a style="color: white;" href="{% url 'refresh_data_manage' %}">重新生成大表</a></div>
+                            {% else %}
+                                正在生成中...
+                            {% endif %}
+
+                        </th>
+                    </tr>
+
+                </table>
+                <br>
+                <div>
+                    <p style="font-size: 20px;text-align:center;color: white;">各小表信息</p>
+                </div>
+                <br>
+                <table>
+                    <tr>
+                        <th>编号</th>
+                        {% for name in table_name %}
+                            <th>{{ name }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for value in tabel_values %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            {% for item in value %}
+                                <td>{{ item }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+
+
+                </table>
+                <div class="t_footer">
+
+                    <div class="page">共{{ tabel_values.paginator.num_pages }}页，{{ tabel_values.number }}/{{ tabel_values.paginator.num_pages }}</div>
+                    <div class="page_nav">
+                        {% if tabel_values.has_previous %}
+                            <a  href="?page={{ tabel_values.previous_page_number }}"><</a>
+                        {% else %}
+                            <a  href="#" disabled="disabled"><</a>
+                        {% endif %}
+                        {% if tabel_values.has_next %}
+                            <a href="?page={{ tabel_values.next_page_number }}">></a>
+                        {% else %}
+                            <a href="#" disabled="disabled">></a>
+                        {% endif %}
+                    </div>
+                    <div class="go_nav">
+                        <form name="pageform">
+                            跳转到 <input id ='page_input' type="text" placeholder="1"> <button  onclick="redict()">GO</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script type="text/javascript" src="{% static "new/js/jquery-3.2.1.min.js" %}" ></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+{% endblock %}

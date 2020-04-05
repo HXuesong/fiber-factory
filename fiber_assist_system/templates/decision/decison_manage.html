@@ -1,0 +1,85 @@
+<!-- 基页面继承 -->
+{% extends "user_info/user_base.html" %}
+<!-- 加载静态文件 -->
+{% load staticfiles %}
+<!-- 模块调用 -->
+{% block decison_manage %}
+
+    <!doctype html>
+
+    <link rel="stylesheet" href="{% static 'new/css/scrollBar.css' %}">
+    <link rel="stylesheet" href="{% static 'new/css/function_manage.css' %}">
+    
+    <script>
+     window.onload = function(){
+            var div = document.getElementById('decision_ma_li');
+            div.setAttribute("class", "active");
+        }
+        var is_show_1 = true;
+        var is_show_2 = false;
+    </script>
+    
+    <div class="main">
+
+        <!-- 未启用决策区 -->
+        <div class="half_side">
+            <div class="manage_title">未启用</div>
+            <ul class="aim_list">
+                {% for item in not_show_menu %}
+                    <li>
+                    <span class="aim_name">{{ item.ana_name }}</span>
+                        <span ><a class="btn add_btn" href="{% url 'decision_manege' %}?id={{ item.ana_id }}&action=show">添 加</a></span>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+
+        <!-- 已启用决策区 -->
+        <div class="half_side" style="margin-left: 15px">
+            <div class="manage_title">已启用</div>
+            <ul class="aim_list">
+                {% for item in ana_menu  %}
+                    <li>
+                    <span class="aim_name">{{ item.ana_name }}</span>
+                        <span><a class="btn delete_btn" href="{% url 'decision_manege' %}?id={{ item.ana_id }}&action=not_show">移 除</a></span>
+                </li>
+                {% endfor %}
+
+{#                <li>#}
+{#                    <span class="aim_name">xxxxxxxxxx分析</span>#}
+{#                    <span class="btn delete_btn">移 除</span>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <span class="aim_name">xxxxxxxxxx分析</span>#}
+{#                    <span class="btn delete_btn">移 除</span>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <span class="aim_name">xxxxxxxxxx分析</span>#}
+{#                    <span class="btn delete_btn">移 除</span>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <span class="aim_name">xxxxxxxxxx分析</span>#}
+{#                    <span class="btn delete_btn">移 除</span>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <span class="aim_name">xxxxxxxxxx分析</span>#}
+{#                    <span class="btn delete_btn">移 除</span>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <span class="aim_name">xxxxxxxxxx分析</span>#}
+{#                    <span class="btn delete_btn">移 除</span>#}
+{#                </li>#}
+            </ul>
+        </div>
+    </div>
+
+    <!-- 引入外部JS文件 -->
+    <script type="text/javascript" src="{% static 'new/js/jquery-3.2.1.min.js' %}" ></script>
+    <script src="{% static 'new/js/jquery.min.js' %}"></script>
+    <script src="{% static 'new/js/scrollBar.js' %}"></script>
+    <script src="{% static 'new/js/SetSiderHeight.js' %}"></script>
+    <script src="{% static 'new/js/function_manage.js' %}"></script>
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+{% endblock %}

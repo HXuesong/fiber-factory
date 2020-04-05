@@ -1,0 +1,164 @@
+@import "lib/reset";
+@import "lib/function";
+@import "widget/top";
+@import "widget/sidebar";
+@import "widget/layout";
+
+body {
+  background: #000c3c;
+  font-family: "Microsoft YaHei", arial;
+}
+
+
+
+.main {
+  //float: left;
+  //width: 82%;
+  ////margin-left: 15px;
+  //margin-top: 15px;
+
+  .log_header {
+    font-size: 18px;
+    color: #999999;
+    .tab {
+      display: inline-block;
+      width: 135px;
+      height: 45px;
+      background: #01144f;
+      text-align: center;
+      line-height: 45px;
+      cursor: pointer;
+      border-top-left-radius: 7%;
+      border-top-right-radius: 7%;
+    }
+    .tab.active {
+      background: #42b2ff;
+      color: #ffffff;
+    }
+  }
+
+  .content {
+    //margin-top: 10px;
+    ////width:100%;
+    ////height: 700px;
+    //background: #01144f;
+    //color: #42b2ff;
+    ////padding: 20px 0 0 20px;
+    //position: relative;
+
+    table {
+      width:100%;
+      color: #ffffff;
+
+      th,td {
+        //display: inline-block;
+        //width: 16%;
+        background: #01144f;
+        border-right: 1px solid #000c3c;
+        border-bottom: 1px solid #000c3c;
+        text-align: center;
+        //min-height: 40px;
+        width: 12%;
+        padding: 10px 0;
+        //line-height: 40px;
+        font-size: 14px;
+        font-family: "Microsoft YaHei";
+        &:first-child {
+          width: 6%;
+        }
+        &:last-child {
+          border-right: none;
+        }
+        //&:nth-last-of-type(even){
+        //  border-left: none;
+        //}
+        //&:nth-child(7) {
+        //  width: 18%;
+        //}
+      }
+      th{
+        font-family: "宋体";
+      }
+
+      .del_btn,.deled_btn{
+        display: block;
+        width: 85px;
+        height: 30px;
+        background: #7c7c7c;
+        margin: 0 auto;
+        line-height: 30px;
+        color: #ffffff;
+        font-size: 14px;
+        font-family: 宋体;
+        border-top: 1px solid #cbcbcb;
+        border-bottom: 1px solid #010b2d;
+      }
+      .deled_btn{
+        background: #42b2ff;
+      }
+    }
+
+    .t_footer {
+      float: right;
+      padding: 10px;
+      padding-right: 48px;
+      .page {
+        display: inline-block;
+        font-size: 15px;
+        font-family: "Microsoft YaHei", arial;
+        color: #ffffff;
+        vertical-align: middle;
+      }
+      .page_nav {
+        display: inline-block;
+        vertical-align: middle;
+        a {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          background: #42b2ff;
+          margin-left: 15px;
+          font-family: "Microsoft YaHei";
+          font-size: 18px;
+          color: #ffffff;
+          border-radius: 2px;
+        }
+      }
+      .go_nav {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px;
+        color: #ffffff;
+        margin-left: 48px;
+        input {
+          width: 56px;
+          height: 30px;
+          text-align: right;
+          line-height: 30px;
+          border-radius: 2px;
+          border: none;
+          margin-right: 10px;
+          font-size: 18px;
+          color: #333333;
+        }
+        button{
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          background: #42b2ff;
+          margin-left: 15px;
+          font-family: "Microsoft YaHei";
+          font-size: 15px;
+          color: #ffffff;
+          border: none;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,158 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei";
+}
+html{
+  height: 100%;
+  width: 100%;
+}
+body{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url("../images/login_back.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+  .ghost-center{
+    position: absolute;
+    top:0;
+    height: 100%;
+    width: 100%;
+    display:flex;/*Flex布局*/
+    display: -webkit-flex; /* Safari */
+    align-items:center;/*指定垂直居中*/
+    .login_container {
+      .td_logo{
+        float: left;
+        width: 250px;
+        height: 66px;
+        margin-left: 115px;
+        position: relative;
+        top: -80px;
+      }
+      width: 480px;
+      height: 492px;
+      margin: 0 auto;
+      .login_box{
+        user-select: none;
+        box-shadow: 0 0 100px -25px #3fa9f5;
+        float: left;
+        width: 100%;
+        height: 350px;
+        position: relative;
+        background-color: #01144f;
+        border: 4px solid #3fa9f5;
+        .border_angle{
+          position: absolute;
+          width: 52px;
+          height: 52px;
+        }
+        .left_top{
+          left: -6px;
+          top: -6px;
+          border-left: 8px solid #3fa9f5;
+          border-top: 8px solid #3fa9f5;
+        }
+        .left_bottom{
+          top: 296px;
+          left: -6px;
+          border-left: 8px solid #3fa9f5;
+          border-bottom: 8px solid #3fa9f5;
+        }
+        .right_top{
+          top: -6px;
+          left: 426px;
+          border-right: 8px solid #3fa9f5;
+          border-top: 8px solid #3fa9f5;
+        }
+        .right_bottom{
+          top: 296px;
+          left: 426px;
+          border-right: 8px solid #3fa9f5;
+          border-bottom: 8px solid #3fa9f5;
+        }
+        .inputs_content{
+          margin: 0 auto;
+          width: 275px;
+          height: 100%;
+          overflow: hidden;
+          .user_input{
+            height: 21px;
+            padding: 10px 0;
+            border: none;
+            box-shadow: inset 1px 1px 5px 0 #ccc;
+            padding-left: 44px;
+            width: 229px;
+            color: #999999;
+            font-size: 17px;
+            margin-top: 23px;
+          }
+          .user_name{
+            background-image: url("../images/user_icon.png");
+            background-position: 5% center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+          }
+          .user_pwd{
+            background-image: url("../images/pwd_icon.png");
+            background-position: 5% center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+          }
+          .input_details{
+            width: 100%;
+            overflow: hidden;
+            margin-top: 5px;
+            font-size: 14px;
+            .remember_check{
+              float: left;
+              margin-top: 5px;
+            }
+            .check_tip{
+              float: left;
+              color: #ffffff;
+              margin-left: 5px;
+            }
+            .right_part{
+              float: right;
+              color: #ffffff;
+              a{
+                text-decoration: none;
+              }
+              .reset_pwd{
+                color: #ffffff;
+              }
+              .reg_btn{
+                color: #42b2ff;
+              }
+            }
+          }
+          #submit_btn{
+            width: 100%;
+            height: 38px;
+            background-color: #42b2ff;
+            border: none;
+            border-radius: 0;
+            color: #ffffff;
+            font-size: 16px;
+            margin-top: 24px;
+          }
+          input{
+            cursor: pointer;
+          }
+        }
+        .login_title{
+          color: #ffffff;
+          font-size: 20px;
+          padding-bottom: 17px;
+          padding-top: 28px;
+          font-weight: 700;
+          border-bottom: 1px solid #ffffff;
+        }
+      }
+    }
+  }
+}

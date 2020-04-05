@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Tablename#tb_BeatTestBJEntry
+PrimaryKey#uid
+SqlMax#34613
+HiveMax#34613
+UpdateCounts#0
+UpdateTime#2018-01-02 10:01:34.128326535 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_BeatTestBJ
+PrimaryKey#uid
+SqlMax#2258
+HiveMax#2258
+UpdateCounts#0
+UpdateTime#2018-01-02 10:02:29.802326447 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_CutMandrelCa
+PrimaryKey#uid
+SqlMax#2429
+HiveMax#2429
+UpdateCounts#0
+UpdateTime#2018-01-02 10:01:34.676326534 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_CutMandrelEntry
+PrimaryKey#uid
+SqlMax#3494
+HiveMax#3494
+UpdateCounts#0
+UpdateTime#2018-01-02 10:01:08.105326575 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_CutMandrel
+PrimaryKey#uid
+SqlMax#3448
+HiveMax#3448
+UpdateCounts#0
+UpdateTime#2018-01-02 10:02:00.166326494 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_DensityTest
+PrimaryKey#uid
+SqlMax#1647
+HiveMax#1647
+UpdateCounts#0
+UpdateTime#2018-01-02 10:02:01.220326492 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_InspectionFinalPK2600
+PrimaryKey#uid
+SqlMax#49784
+HiveMax#49784
+UpdateCounts#0
+UpdateTime#2018-01-02 10:02:30.240326447 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_InspectionHorPK2600Head
+PrimaryKey#uid
+SqlMax#7609
+HiveMax#7609
+UpdateCounts#0
+UpdateTime#2018-01-02 10:01:08.993326574 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_InspectionHorPK2600
+PrimaryKey#uid
+SqlMax#57692
+HiveMax#57692
+UpdateCounts#0
+UpdateTime#2018-01-02 10:02:01.674326491 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_MandrelStretch
+PrimaryKey#uid
+SqlMax#3534
+HiveMax#3534
+UpdateCounts#0
+UpdateTime#2018-01-02 10:01:06.618326577 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_ProductTestEntry
+PrimaryKey#uid
+SqlMax#22683
+HiveMax#22683
+UpdateCounts#0
+UpdateTime#2018-01-02 10:01:33.458326535 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_ProductTest
+PrimaryKey#uid
+SqlMax#1645
+HiveMax#1645
+UpdateCounts#0
+UpdateTime#2018-01-02 10:02:29.572326447 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_VADDegassingEntry
+PrimaryKey#uid
+SqlMax#3759
+HiveMax#3759
+UpdateCounts#0
+UpdateTime#2018-01-02 10:02:55.498326407 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_VADDegassing
+PrimaryKey#uid
+SqlMax#910
+HiveMax#910
+UpdateCounts#0
+UpdateTime#2018-01-02 10:00:42.058326616 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_VADDeposition
+PrimaryKey#uid
+SqlMax#4512
+HiveMax#4512
+UpdateCounts#0
+UpdateTime#2018-01-02 10:00:42.005326616 +0800
+UpdatedStatus#NoData
+-------------------------------------------------------------------
+Tablename#tb_VADSinter
+PrimaryKey#uid
+SqlMax#4198
+HiveMax#4198
+UpdateCounts#0
+UpdateTime#2018-01-02 10:00:40.862326618 +0800
+UpdatedStatus#NoData

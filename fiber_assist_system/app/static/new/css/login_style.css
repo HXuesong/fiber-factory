@@ -1,0 +1,297 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei";
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url("/static/new/imgs/login/login-bac2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+}
+body .ghost-center {
+  position: absolute;
+  top: 292px;
+  right: 336px;
+  width: 480px;
+  height: 440px;
+}
+body .ghost-center .login_container {
+  width: 480px;
+  height: 440px;
+}
+body .ghost-center .login_container .login_box {
+  user-select: none;
+  width: 480px;
+  height: 440px;
+  position: relative;
+  background-color: #ffffff;
+}
+body .ghost-center .login_container .login_box .inputs_content {
+  margin: 0 auto;
+  width: 360px;
+  height: 100%;
+  overflow: hidden;
+}
+body .ghost-center .login_container .login_box .login_title {
+  color: #000000;
+  font-size: 24px;
+  margin-top: 48px;
+  margin-bottom: 50px;
+  font-weight: 480;
+}
+body .ghost-center .login_container .login_box .inputs_content .user_input {
+  margin-top: 20px;
+  width: 340px;
+  height: 40px;
+  padding: 10px 0;
+  border: none;
+  padding-left: 12px;
+  color: #575757a4;
+  font-size: 14px;
+  background-color: #eeeeee;
+  border-radius: 6px;
+}
+body .ghost-center .login_container .login_box .inputs_content .user_name {
+  background-image: url("/static/new/imgs/login/user-name.png");
+  background-position: 95% center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+body .ghost-center .login_container .login_box .inputs_content .user_pwd {
+  background-image: url("/static/new/imgs/login/password-lock.png");
+  background-position: 95% center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 40px;
+  font-size: 14px;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .remember_check {
+  float: left;
+  margin-top: 5px;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .check_tip {
+  float: left;
+  color: #5cb0fe;
+  margin-left: 5px;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .right_part {
+  float: right;
+  color: #ffffff;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .right_part a {
+  text-decoration: none;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .right_part .reset_pwd {
+  color: #5cb0fe;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .right_part .reg_btn {
+  color: #42b2ff;
+}
+body .ghost-center .login_container .login_box .inputs_content #submit_btn {
+  width: 100%;
+  height: 38px;
+  background-color: #42b2ff;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 16px;
+  margin-top: 24px;
+}
+
+body .ghost-center .login_container .login_box .inputs_content input {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* * {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei";
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url("/static/new/imgs/login/login_back.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+}
+body .ghost-center {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+}
+body .ghost-center .login_container {
+  width: 480px;
+  height: 492px;
+  margin: 0 auto;
+}
+body .ghost-center .login_container .td_logo {
+  float: left;
+  width: 250px;
+  height: 66px;
+  margin-left: 115px;
+  position: relative;
+  top: -80px;
+}
+body .ghost-center .login_container .login_box {
+  user-select: none;
+  box-shadow: 0 0 100px -25px #3fa9f5;
+  float: left;
+  width: 100%;
+  height: 350px;
+  position: relative;
+  background-color: #01144f;
+  border: 4px solid #3fa9f5;
+}
+body .ghost-center .login_container .login_box .border_angle {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+}
+body .ghost-center .login_container .login_box .left_top {
+  left: -6px;
+  top: -6px;
+  border-left: 8px solid #3fa9f5;
+  border-top: 8px solid #3fa9f5;
+}
+body .ghost-center .login_container .login_box .left_bottom {
+  top: 296px;
+  left: -6px;
+  border-left: 8px solid #3fa9f5;
+  border-bottom: 8px solid #3fa9f5;
+}
+body .ghost-center .login_container .login_box .right_top {
+  top: -6px;
+  left: 426px;
+  border-right: 8px solid #3fa9f5;
+  border-top: 8px solid #3fa9f5;
+}
+body .ghost-center .login_container .login_box .right_bottom {
+  top: 296px;
+  left: 426px;
+  border-right: 8px solid #3fa9f5;
+  border-bottom: 8px solid #3fa9f5;
+}
+body .ghost-center .login_container .login_box .inputs_content {
+  margin: 0 auto;
+  width: 275px;
+  height: 100%;
+  overflow: hidden;
+}
+body .ghost-center .login_container .login_box .inputs_content .user_input {
+  height: 40px;
+  padding: 10px 0;
+  border: none;
+  box-shadow: inset 1px 1px 5px 0 #ccc;
+  padding-left: 44px;
+  width: 275px;
+  color: #999999;
+  font-size: 17px;
+  margin-top: 23px;
+}
+body .ghost-center .login_container .login_box .inputs_content .user_name {
+  background-image: url("/static/new/imgs/login/user_icon.png");
+  background-position: 5% center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+body .ghost-center .login_container .login_box .inputs_content .user_pwd {
+  background-image: url("/static/new/imgs/login/pwd_icon.png");
+  background-position: 5% center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 5px;
+  font-size: 14px;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .remember_check {
+  float: left;
+  margin-top: 5px;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .check_tip {
+  float: left;
+  color: #ffffff;
+  margin-left: 5px;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .right_part {
+  float: right;
+  color: #ffffff;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .right_part a {
+  text-decoration: none;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .right_part .reset_pwd {
+  color: #ffffff;
+}
+body .ghost-center .login_container .login_box .inputs_content .input_details .right_part .reg_btn {
+  color: #42b2ff;
+}
+body .ghost-center .login_container .login_box .inputs_content #submit_btn {
+  width: 100%;
+  height: 38px;
+  background-color: #42b2ff;
+  border: none;
+  border-radius: 0;
+  color: #ffffff;
+  font-size: 16px;
+  margin-top: 24px;
+}
+
+body .ghost-center .login_container .login_box .inputs_content input {
+  cursor: pointer;
+}
+body .ghost-center .login_container .login_box .login_title {
+  color: #ffffff;
+  font-size: 20px;
+  padding-bottom: 17px;
+  padding-top: 28px;
+  font-weight: 700;
+  border-bottom: 1px solid #ffffff;
+} */

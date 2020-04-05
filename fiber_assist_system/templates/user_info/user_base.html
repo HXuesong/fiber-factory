@@ -1,0 +1,171 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>融合大数据与智能算法的光纤工厂</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'new/css/user_base.css' %}">
+    <script src={% static "new/js/lib/Vue.min.js" %}></script>
+
+</head>
+
+
+
+<body>
+<div class="ScoreContainer" style="display:none;">
+        <span class="close_score">
+            X
+        </span>
+    <p class="score_title" style="margin-top: 30px;">总体评分</p>
+    <div id="whole_score">
+
+    </div>
+    <p class="score_title">你的评分</p>
+    <div id="user_score">
+
+    </div>
+</div>
+<div class="BarGraph" style="display: none;">
+        <span class="close_bar">X</span>
+</div>
+
+<span class="tip_info"></span>
+<div class="top f-cb">
+    <div class="left_bar">
+        <!-- <img class="logo" src={% static "new/imgs/BasicUserInfo/logo.png" %}/> -->   
+    </div>
+
+    <div class="title">融合大数据与智能算法的光纤工厂</div>
+
+    <div class="right_bar">
+        <div class="alarm">
+            <a href=""><img src="{% static "new/imgs/BasicUserInfo/ring-logo.png" %}" alt=""></a>
+        </div>
+        <div class="exit">
+            <a href="{% url 'screen_dis' %}"><img src={% static "new/imgs/BasicUserInfo/bigScreen.png" %}/></a>
+        </div>
+        <img class="rightLightline" src={% static "new/imgs/BasicUserInfo/lightline.png" %}/>
+        <div class="userInfo">
+            <div class="profile" style="cursor:pointer" onclick="location='{% url 'user_info' %}'">
+                <img class="userPicture" src={% static "new/imgs/BasicUserInfo/people.png" %}/>
+                        <div class="info">
+                            <p class="name">{{ request.user.username }}</p>
+                            <p class="authority" >{{ request.session.usertype}}</p>
+                        </div>
+                <img class="downTriangle" src={% static "new/imgs/BasicUserInfo/downTriangle.png" %}/>
+            </div>
+        </div>
+        <div class="logout"><a href="{% url 'logout' %}"><img src="{% static "new/imgs/BasicUserInfo/exit.png" %}" alt=""></a></div>
+    </div>
+
+</div>
+
+<div id="container" class="f-cb">
+    <div class="sidebar" style="height: 850px;">
+
+        <!-- <div class="profile" style="cursor:pointer"  onclick="location='{% url 'user_info' %}'">
+            <div class="head" style="background-image:url(static/new/imgs/heads/1.jpg)"></div>
+            <div class="info">
+                <p class="name">{{ request.user.username }}</p>
+                <p class="authority" >{{ request.session.usertype}}</p>
+            </div>
+        </div> -->
+
+        <div class="nav" id="nav-container" v-cloak>
+            <ul>
+                {% if request.path != "/decision" and request.path != "/breakpointpage" and request.path != "/getdecision" and request.path != "/userloginfo" and request.path != "/userinfo" %}
+                    <li  class="m_li active" @click="switch_set_tab_1">
+                        {% else %}
+
+                    <li  class="m_li" @click="switch_set_tab_1">
+                {% endif %}
+
+                <a>
+                    <img class="i_set" src={% static "new/imgs/BasicUserInfo/gear.png" %}>
+                    管理台
+                    <img class="i_arrow" src="{% static "new/imgs/i_arrow.png" %}" alt="">
+                </a>
+                </li>
+
+                <li v-show="set_active_1" class="s_li f-cb">
+                    <ul class="s_menu">
+                        {% if request.session.usertype == "超级管理员" %}
+                            <li id="sys_ma_li"><a href="{% url 'admin_sys_logs' %}">系统管理</a></li>
+                            <li id="data_ma_li"><a href="{% url 'data_manage' %}">数据管理</a></li>
+                            <li id ="team_ma_li"><a href="{% url 'admin_team_manage' %}">团队管理</a></li>
+                            <li id="reset_psw_li"><a href="{% url 'admin_get_reset_password' %}">密码重置审核</a></li>
+                            <li id = 'message_ma_li'><a href="{% url 'sys_message' %}">消息管理</a></li>
+                            <li id = 'decision_ma_li'><a href="{% url 'decision_manege' %}">决策管理</a></li>
+                        {% elif request.session.usertype == "团队创建者" %}
+                            <li id ="data_ma_li"><a href="{% url 'data_manage' %}">数据管理</a></li>
+                            <li id = 'team_ma_li' ><a href="{% url 'founder_get_join_list' %}">团队管理</a></li>
+                            <li  id ='message_ma_li'><a href="{% url 'sys_message' %}">消息管理</a></li>
+                        {% elif request.session.usertype == "成员" %}
+                            <li id="team_ma_li"><a href="{% url 'user_get_manager_list' %}">团队管理</a></li>
+                            <li id="message_ma_li"><a href="{% url 'sys_message' %}">消息管理</a></li>
+                        {% else %}
+                            <li id="message_ma_li"><a href="{% url 'sys_message' %}">消息管理</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                {% if request.path == "/decision" or request.path == "/breakpointpage" or request.path == "/getdecision" %}
+
+                    <li  class="m_li active " @click="switch_set_tab_2">
+                        {% else %}
+                    <li  class="m_li " @click="switch_set_tab_2">
+                {% endif %}
+                <a>
+                    <img class="i_set" src={% static "new/imgs/BasicUserInfo/bar.png" %}>
+                    决策分析
+                    <img class="i_arrow" src="{% static "new/imgs/i_arrow.png" %}" alt="">
+                </a>
+                </li>
+                <li v-show="set_active_2" class="s_li f-cb">
+
+                    <ul class="s_menu">
+                        {% for m in ana_menu%}
+                        <li id = "{{ m.ana_id }}"><a href="{% url 'decision' %}?target_label={{ m.ana_id }}">{{ m.ana_name }}</a></li>
+                        {% endfor %}
+{#                        <li id = "ECC"><a href="{% url 'decision' %}?target_label=ECC">折射率分析</a></li>#}
+{#                        <li id = "1310MFD"><a href="{% url 'decision' %}?target_label=1310MFD">MFD分析</a></li>#}
+{#                        <li id="λc"><a href="{% url 'decision' %}?target_label=λc">截止波长分析</a></li>#}
+{#                        <li id="Zero DML."><a href="{% url 'decision' %}?target_label=Zero DML.">色散分析</a></li>#}
+                        <li id ='bk'><a href="{% url 'breakpoint_page' %}">断点率分析</a></li>
+                    </ul>
+                </li>
+                {#                <li class="m_li">#}
+                {#                    <a href="">#}
+                {#                        <img class="i_set" src={% static "new/imgs/monitor.png" %}>#}
+                {#                        流程管理#}
+                {#                        <img class="i_arrow" src="{% static  "new/imgs/i_arrow.png" %}" alt="">#}
+                {#                    </a>#}
+                {#                </li>#}
+            </ul>
+        </div>
+        <!-- <div class="logout"><a href="{% url 'logout' %}">退出登陆</a> <img src="{% static "new/imgs/logout_icon.png" %}" alt=""></div> -->
+    </div>
+    {% block user_info %}{% endblock %}
+    {% block decison_page %}{% endblock %}
+    {% block breakpoint %}{% endblock %}
+    {% block userlogininfo %}{% endblock %}
+    {% block data_manage %}{% endblock %}
+    {% block admin_message %}{% endblock %}
+    {% block reset_password %}{% endblock %}
+    {% block sys_message %}{% endblock %}
+    {% block admin_team_manage_audit %}{% endblock %}
+    {% block admin_team_list %}{% endblock %}
+    {% block founder_team_manager %}{% endblock %}
+    {% block founder_team_all_user %}{% endblock %}
+    {% block founder_team_join %}{% endblock %}
+    {% block user_team_manager %}{% endblock %}
+    {% block user_team_all_user %}{% endblock %}
+    {% block admin_sys_message %}{% endblock %}
+    {% block decison_manage %}{% endblock %}
+{#    {% block admin_message %}{% endblock %}#}
+
+</div>
+</body>
+</html>

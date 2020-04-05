@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei";
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+  background-image: url("/static/new/imgs/login/reg-bac2.png");
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+}
+body .ghost_ele {
+  position: absolute;
+  top: 220px;
+  right: 330px;
+  width: 475px;
+  height: 530px;
+}
+body .ghost_ele .reg_container {
+  width: 475px;
+  height: 530px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+body .ghost_ele .reg_container .reg_box {
+  width: 350px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+body .ghost_ele .reg_container .reg_box .user_input {
+  width: 306px;
+  height: 20px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 6px;
+  padding-left: 50px;
+  /* color: #575757a4; */
+  font-size: 14px;
+  margin-top: 23px;
+  background-color: #eeeeee;
+  background-position: 5% center;
+  background-repeat: no-repeat;
+  background-size: 18px 20px;
+}
+body .ghost_ele .reg_container .reg_box .confirm_pwd {
+  position: relative;
+}
+body .ghost_ele .reg_container .reg_box .confirm_pwd .confirm_tip {
+  display: none;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: url("/static/new/imgs/login/cross.png") center no-repeat #ffffff;
+  background-size: 100% 100%;
+  top: 32px;
+  left: 320px;
+  border-radius: 50%;
+}
+body .ghost_ele .reg_container .reg_box #user_name {
+  margin-top: 66px;
+  background-image: url("/static/new/imgs/login/user-name.png");
+}
+body .ghost_ele .reg_container .reg_box #user_pwd {
+  background-image: url("/static/new/imgs/login/password-lock.png");
+}
+body .ghost_ele .reg_container .reg_box #user_confirm_pwd {
+  background-image: url("/static/new/imgs/login/password-lock.png");
+}
+body .ghost_ele .reg_container .reg_box #user_identity {
+  background-image: url("/static/new/imgs/login/user-info.png");
+  background-size: 30px 25px;
+  cursor: pointer;
+}
+body .ghost_ele .reg_container .reg_box #user_group {
+  background-image: url("/static/new/imgs/login/user-group.png");
+  background-size: 30px 25px;
+  cursor: pointer;
+}
+body .ghost_ele .reg_container .reg_box .selector_box {
+  position: relative;
+}
+body .ghost_ele .reg_container .reg_box .selector_box .ghost_mask {
+  position: absolute;
+  width: 100%;
+  height: 41px;
+  top: 23px;
+  left: 0;
+  cursor: pointer;
+}
+body .ghost_ele .reg_container .reg_box .selector_box .selections {
+  display: none;
+  width: 350px;
+  top: 65px;
+  left: 0;
+  background: #ffffff;
+  z-index: 10;
+  position: absolute;
+  border: 1px solid #cccccc;
+  border-top: none;
+  list-style: none;
+}
+body .ghost_ele .reg_container .reg_box .selector_box .selections li {
+  height: 38px;
+  line-height: 38px;
+  padding-left: 12px;
+  border-bottom: 1px solid #cccccc;
+  cursor: pointer;
+  user-select: none;
+}
+body .ghost_ele .reg_container .reg_box .selector_box .arrow {
+  position: absolute;
+  top: 40px;
+  left: 330px;
+  width: 15px;
+  height: 8px;
+  background: url("/static/new/imgs/login/down-arrow.png") center no-repeat;
+  cursor: pointer;
+}
+body .ghost_ele .reg_container .reg_box .own_account {
+  text-align: right;
+  color: #ffffff;
+  font-size: 14px;
+  padding-top: 13px;
+}
+body .ghost_ele .reg_container .reg_box .own_account a {
+  text-decoration: none;
+  color: #42b2ff;
+}
+body .ghost_ele .reg_container .reg_box #submit_btn {
+  width: 100%;
+  height: 38px;
+  background-color: #42b2ff;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+/*
+原有布局样式：
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei";
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+  background-image: url("/static/new/imgs/login/reg-bac.png");
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+}
+body .td_logo {
+  position: absolute;
+  left: 22px;
+  top: 23px;
+  width: 174px;
+}
+body .ghost_ele {
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+}
+body .ghost_ele .reg_container {
+  width: 482px;
+  height: 546px;
+  background: #01144f;
+  margin: 0 auto;
+  border: 4px solid #3fa9f5;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 100px -25px #3fa9f5;
+}
+body .ghost_ele .reg_container .border_angle {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+}
+body .ghost_ele .reg_container .left_top {
+  left: -6px;
+  top: -6px;
+  border-left: 8px solid #3fa9f5;
+  border-top: 8px solid #3fa9f5;
+}
+body .ghost_ele .reg_container .left_bottom {
+  top: 492px;
+  left: -6px;
+  border-left: 8px solid #3fa9f5;
+  border-bottom: 8px solid #3fa9f5;
+}
+body .ghost_ele .reg_container .right_top {
+  top: -6px;
+  left: 428px;
+  border-right: 8px solid #3fa9f5;
+  border-top: 8px solid #3fa9f5;
+}
+body .ghost_ele .reg_container .right_bottom {
+  top: 492px;
+  left: 428px;
+  border-right: 8px solid #3fa9f5;
+  border-bottom: 8px solid #3fa9f5;
+}
+body .ghost_ele .reg_container .reg_box {
+  width: 274px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+body .ghost_ele .reg_container .reg_box .reg_title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 18px;
+  padding-bottom: 18px;
+  padding-top: 28px;
+  border-bottom: 1px solid #ffffff;
+}
+body .ghost_ele .reg_container .reg_box .user_input {
+  height: 21px;
+  padding: 10px 0;
+  border: none;
+  box-shadow: inset 1px 1px 5px 0 #ccc;
+  padding-left: 44px;
+  width: 229px;
+  color: #999999;
+  font-size: 17px;
+  margin-top: 23px;
+  background-position: 5% center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+body .ghost_ele .reg_container .reg_box .confirm_pwd {
+  position: relative;
+}
+body .ghost_ele .reg_container .reg_box .confirm_pwd .confirm_tip {
+  display: none;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: url("/static/new/imgs/login/cross.png") center no-repeat #ffffff;
+  background-size: 100% 100%;
+  top: 28px;
+  left: 288px;
+  border-radius: 50%;
+}
+body .ghost_ele .reg_container .reg_box #user_name {
+  background-image: url("/static/new/imgs/login/user_icon.png");
+}
+body .ghost_ele .reg_container .reg_box #user_pwd {
+  background-image: url("/static/new/imgs/login/pwd_confirm_icon.png");
+}
+body .ghost_ele .reg_container .reg_box #user_confirm_pwd {
+  background-image: url("/static/new/imgs/login/pwd_icon.png");
+}
+body .ghost_ele .reg_container .reg_box #user_identity {
+  background-image: url("/static/new/imgs/login/identity_icon.png");
+  cursor: pointer;
+}
+body .ghost_ele .reg_container .reg_box #user_group {
+  background-image: url("/static/new/imgs/login/group_icon.png");
+  cursor: pointer;
+}
+body .ghost_ele .reg_container .reg_box .selector_box {
+  position: relative;
+}
+body .ghost_ele .reg_container .reg_box .selector_box .ghost_mask {
+  position: absolute;
+  width: 100%;
+  height: 41px;
+  top: 23px;
+  left: 0;
+  cursor: pointer;
+}
+body .ghost_ele .reg_container .reg_box .selector_box .selections {
+  display: none;
+  width: 231px;
+  top: 65px;
+  left: 0;
+  background: #ffffff;
+  z-index: 10;
+  position: absolute;
+  border: 1px solid #cccccc;
+  border-top: none;
+  list-style: none;
+}
+body .ghost_ele .reg_container .reg_box .selector_box .selections li {
+  height: 38px;
+  line-height: 38px;
+  padding-left: 12px;
+  border-bottom: 1px solid #cccccc;
+  cursor: pointer;
+  user-select: none;
+}
+body .ghost_ele .reg_container .reg_box .selector_box .arrow {
+  position: absolute;
+  top: 24px;
+  left: 233px;
+  width: 39px;
+  height: 39px;
+  background: url("/static/new/imgs/login/arrow.png") center no-repeat #999999;
+  background-size: 50% 50%;
+  cursor: pointer;
+}
+body .ghost_ele .reg_container .reg_box .own_account {
+  text-align: right;
+  color: #ffffff;
+  font-size: 14px;
+  padding-top: 13px;
+}
+body .ghost_ele .reg_container .reg_box .own_account a {
+  text-decoration: none;
+  color: #42b2ff;
+}
+body .ghost_ele .reg_container .reg_box #submit_btn {
+  width: 100%;
+  height: 38px;
+  background-color: #42b2ff;
+  border: none;
+  border-radius: 0;
+  color: #ffffff;
+  font-size: 16px;
+  margin-top: 24px;
+  cursor: pointer;
+} */

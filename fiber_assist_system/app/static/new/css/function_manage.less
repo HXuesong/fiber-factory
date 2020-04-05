@@ -1,0 +1,88 @@
+@import "lib/reset";
+@import "lib/function";
+@import "widget/top";
+@import "widget/sidebar";
+@import "widget/layout";
+html{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Microsoft YaHei";
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #000c3c;
+  .main{
+    width: 82%;
+    height: 90%;
+    float: left;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 20px;
+    .half_side{
+      float: left;
+      width: 49%;
+      height: 100%;
+      .manage_title{
+        height: 66.5px;
+        line-height: 66.5px;
+        width: 100%;
+        border-top-right-radius: 7px;
+        border-top-left-radius: 7px;
+        background: #01144f;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 23px;
+      }
+      .aim_list{
+        height: 855px;
+        width: 98.5%;
+        margin-top: 28.5px;
+        li{
+          background: #01144f;
+          height: 38px;
+          width: 100%;
+          line-height: 38px;
+          color: #FFFFFF;
+          font-size: 22px;
+          padding-top: 12px;
+          padding-bottom: 12px;
+          margin-bottom: 7px;
+          .aim_name{
+            float: left;
+            margin-left: 43px;
+            text-shadow: 1px 1px 1px #333;
+          }
+          .btn{
+            width: 100px;
+            height: 37px;
+            text-align: center;
+            line-height: 37px;
+            float: right;
+            margin-right: 43px;
+            font-size: 16px;
+          }
+          .add_btn{
+            border-top: 2px solid #b3e0ff;
+            background: #42b2ff;
+            text-shadow: 1px 1px 1px #067ccc;
+            a{
+              color: #FFFFFF;
+            }
+          }
+          .delete_btn{
+            color: #f25f61;
+            text-decoration: underline;
+            text-shadow: 1px 1px 1px #333;
+            a{
+              color: #f25f61;
+            }
+          }
+        }
+      }
+    }
+  }
+}

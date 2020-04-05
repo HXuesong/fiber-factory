@@ -1,0 +1,84 @@
+{% extends 'user_info/user_base.html' %}
+{% load staticfiles %}
+{% block founder_team_join %}
+
+
+    <link rel="stylesheet" type="text/css" href={% static "new/css/founder_manage_audit.css" %}>
+    <script>
+        window.onload = function(){
+            var div = document.getElementById('team_ma_li');
+            div.setAttribute("class", "active");
+        }
+        function redict() {
+            var page = document.getElementById("page_input").value;
+            if(page==""){
+                page = 1;
+            }
+            window.open('?page='+page)
+        }
+    </script>
+    <script>
+        var is_show_1 = true;
+        var is_show_2 = false;
+    </script>
+
+    <div class="main">
+        <div class="main_wrap">
+            <div class="log_header f-cb">
+                <div class="tab active" onclick="window.location.href='{% url 'founder_get_join_list' %}'">加入审核</div>
+                <div class="tab"  onclick="window.location.href='{% url 'founder_get_manager_list' %}'" >管理员列表</div>
+                <div class="tab" onclick="window.location.href='{% url 'founder_get_team_user_list' %}'">所有成员列表</div>
+            </div>
+            <div v-show="content_active" class="content f-cb">
+                <table>
+                    <tr>
+                        <th>序列</th>
+                        <th>用户名</th>
+                        <th>申请</th>
+                        <th>操作</th>
+                    </tr>
+                    {% for team_user in team_user_list %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ team_user.user.username }}</td>
+                            <td>申请加入{{ team_user.team.teamname }}团队</td>
+                            <td>
+                                {% if team_user.is_pass == '待审核' %}
+                                    <a href="{% url 'founder_check_join'%}?flag=y&userid={{ team_user.user.id}}&teamid={{ team_user.team.id}}" class="agree_btn">同意</a>
+                                    <a href="{% url 'founder_check_join'%}?flag=n&userid={{ team_user.user.id}}&teamid={{ team_user.team.id}}" class="refuse_btn">拒绝</a>
+                                {% elif team_user.is_pass == '是' %}
+                                    <a  class="agreed_btn">已同意</a>
+                                {% else %}
+                                    <a  class="refused_btn">已拒绝</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <div class="t_footer">
+                    <div class="page">共{{ team_user_list.paginator.num_pages }}页，{{ team_user_list.number }}/{{ team_user_list.paginator.num_pages }}</div>
+                    <div class="page_nav">
+                        {% if team_user_list.has_previous %}
+                            <a  href="?page={{ team_user_list.previous_page_number }}"><</a>
+                        {% else %}
+                            <a  href="#" disabled="disabled"><</a>
+                        {% endif %}
+                        {% if team_user_list.has_next %}
+                            <a href="?page={{ team_user_list.next_page_number }}">></a>
+                        {% else %}
+                            <a href="#" disabled="disabled">></a>
+                        {% endif %}
+                    </div>
+                    <div class="go_nav">
+                        <form name="pageform">
+                            跳转到 <input id ='page_input' type="text" placeholder="1"> <button  onclick="redict()">GO</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+{% endblock %}

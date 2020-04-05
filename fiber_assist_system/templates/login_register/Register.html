@@ -1,0 +1,169 @@
+<!-- 加载静态文件 -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="shortcut icon" href="new/imgs/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href={% static "new/css/reg_style.css" %}>
+</head>
+<body>
+
+<!-- <img src="{% static 'new/imgs/login/td_logo.png' %}" alt="" class="td_logo"> -->
+<!-- 注册框 -->
+<div class="ghost_ele">
+    <div class="reg_container">
+
+        <!-- <div class="border_angle left_top"></div>
+        <div class="border_angle left_bottom"></div>
+        <div class="border_angle right_top"></div>
+        <div class="border_angle right_bottom"></div> -->
+
+        <form action="{% url 'register' %}" method="post">
+            <div class="reg_box">
+
+                <!-- <p class="reg_title">
+                    用 户 注 册
+                </p> -->
+
+                <!-- 姓名输入框 -->
+                <input type="text" id="user_name" class="user_input" placeholder="输入真实姓名" name="username">
+                <!-- 密码输入框 -->
+                <input type="password" id="user_pwd" class="user_pwd user_input" placeholder="请输入6-12位密码" name="password">
+                <!-- 确认密码输入框 -->
+                <div class="confirm_pwd">
+                    <input type="password" id="user_confirm_pwd" class="user_input" placeholder="确认密码">
+                    <div class="confirm_tip">
+
+                    </div>
+                </div>
+                <br>
+                <!-- 身份选择框 -->
+                <div class="selector_box">
+                    <input type="text" id="user_identity" class=" user_input user_selector" name="usertype" value="选择身份">
+                    <span class="arrow"></span>
+                    <div class="ghost_mask"></div>
+                    <ul class="selections">
+                        <li>团队创建者</li>
+                        <li>普通成员</li>
+                    </ul>
+                </div>
+
+                <!-- 创建/加入团队选择框 -->
+                <div class="selector_box" id="flexible">
+                    <input type="text" id="user_group" class="user_input user_selector" name="teamname"  value="创建/加入团队">
+                    <span class="arrow"></span>
+                    <div class="ghost_mask"></div>
+                    <ul class="selections">
+                        {% for team in teamlist %}
+                            <li>{{ team.teamname }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- 已有账号，返回登录界面 -->
+                <p class="own_account">
+                    已有账号?<a href="{% url 'login' %}" class="to_login">已有账号？ 点此登录</a>
+                </p>
+                <input type="submit" value="注    册" id="submit_btn">
+                <p style="float:left;font-size: 20px;margin-left: 50%;color: red">{{ reason }}</p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 引入js逻辑代码 -->
+<script src={% static "new/js/controller.js" %}></script>
+
+</body>
+</html>
+
+
+<!-- {#<!DOCTYPE html>#}
+{#<html>#}
+{#	<head>#}
+{#		<meta name=”viewport” content=”width=device-width, initial-scale=1″ />#}
+{#		<meta charset="UTF-8">#}
+{#		<link rel="stylesheet" href='{% static "css/Registercss.css" %}' />#}
+{#		<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}" ></script>#}
+{#		<script type="text/javascript" src="{% static 'js/Registerjs.js' %}" ></script>#}
+{#		<title></title>#}
+{#		#}
+{#	</head>#}
+{#	#}
+<script>
+</script>
+{#		#}
+{#	<body>#}
+{#    <form action="{% url 'register' %}" method="post">#}
+{#         {% csrf_token %}#}
+{#		<div id = 'mat'>#}
+{#			<div id = 'tongdinglogo'>#}
+{#				<img src = '{% static 'img/tongdinglogo.png' %}' id = 'tongding'/>#}
+{#			</div>#}
+{#			<div id = 'interface'>#}
+{#				<font id = 'interfacetitle'>用     户     注     册</font>#}
+{#				<div id = 'border'></div>#}
+{#				<div id = 'userdiv'>#}
+{#					<i id = 'icon-user'></i>#}
+{#					<input id = 'userinput' placeholder="用户名" type="text" name="username" />#}
+{#				</div>#}
+{#				<div id = 'passworddiv'>#}
+{#					<i id = 'icon-password'></i>#}
+{#					<input id = 'passwordinput' placeholder="输入密码" type="password" name="password1" />#}
+{#				</div>#}
+{#				<div id = 'confirmpassworddiv'>#}
+{#					<i id = 'icon-confirmpassword'></i>#}
+{#					<input id = 'confirmpasswordinput' placeholder="确认密码" type="password" name="password2" />#}
+{#				</div>#}
+{#				<div id = 'chooseiddiv'>#}
+{#					<i id = 'icon-chooseid'></i>#}
+{#					<select id = 'chooseid' name="usertype">#}
+{#						<option value="-1">选择身份</option>#}
+{#						<option value="0">普通成员</option>#}
+{#						<option value="1">团队创建员</option>#}
+{#						<option value="2">系统管理员</option>#}
+{#					</select>#}
+{#				</div>#}
+{#				#}
+{#				<div id = 'divchanged1'>#}
+{#					<i id = 'icon-div1'></i>#}
+{#					<select id = 'choosegroup' name="teamselect">#}
+{#						<option value="-1">选择团队</option>#}
+{#						{% for team in teamlist %}#}
+{#                            <option value="{{ team.id }}">{{ team.teamname }}</option>#}
+{#                        {% endfor %}#}
+{#					</select>#}
+{#				</div>#}
+{#				#}
+{#				<div id = 'divchanged2'>#}
+{#					<i id = 'icon-div2'></i>#}
+{#					<input id = 'creategroup' placeholder="创建团队" type="text" name="teamname" />#}
+{#				</div>#}
+{#				#}
+{#				<div id = 'tips'>#}
+{#					<font id = 'font1'>#}
+{#						已有账号？#}
+{#					</font>#}
+{#					<a id = 'font2' href = '{% url 'login' %}'>#}
+{#						点此登录#}
+{#					</a>#}
+{#				</div>#}
+{#				<div id = 'registerbutton'>#}
+{#					<input type = 'submit' value = '注册' onclick="return validate()"/>#}
+{#				</div>#}
+{#                <p style="float:left;font-size: 20px;margin-left: 50%;color: red">{{ reason }}</p>#}
+{#			</div>#}
+{#		</div>#}
+{#        </form>#}
+{#	</body>#}
+{#</html>#} -->
+
+<!-- {#    <script>#}
+{#        function test() {#}
+{#            var ty = document.getElementById('user_group').value;#}
+{#            alert(ty)#}
+{#        }#}
+{#    </script>#} -->

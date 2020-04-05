@@ -1,0 +1,132 @@
+{% extends './user_info/user_base.html' %}
+{% load staticfiles %}
+{% block user_info %}
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'new/css/user_info.css' %}">
+    <script src={% static "new/js/lib/Vue-Resource.min.js" %}></script>
+    
+    <script>
+        var is_show_1 = false;
+        var is_show_2 = false;
+    </script>
+    
+    <div class="main" id="user_info_container">
+        <div class="main_wrap">
+            <div class="log_header f-cb">
+                <div class="tab active" onclick="location='{% url 'user_info' %}'">
+                    <span class="message"></span>
+                    <span class="inner">基本信息</span>
+                </div>
+                <div class="tab " onclick="location='{% url 'user_login_info' %}'">
+                    <span class="peopleLogo"></span>
+                    <span class="inner">登陆信息</span>
+                </div>
+            </div>
+            <div class="content f-cb">
+                <div class="head-container" >
+                    <div class="head"></div>
+{#                    <a href="javascript:void(0)" class="change_head" @click="open_set_head">更换头像</a>#}
+                </div>
+                <div class="info">
+                    <div class="input_group">
+                        <div class="input_type_1">
+                            <h6 class="col_name">姓名</h6>
+                            <input class="col_value" placeholder="姓名" type="text" value="{{ request.user.username }}">
+                        </div>
+                        <div class="input_type_1">
+                            <h6 class="col_name">身份</h6>
+                            <input class="col_value" placeholder="" type="text" value="{{ request.session.usertype }}">
+                        </div>
+                    </div>
+                    {% if  request.session.usertype != "超级管理员" %}
+                        <div class="input_group">
+                            <div class="input_group_header">
+                                <h6 class="col_name">所属团队</h6>
+
+                            </div>
+                            <!--三个一组-->
+                            <div class="col_rows">
+                                {% for team_user in team_user_list%}
+                                    <div class="col_edit_item">
+                                        <input class="col_value"  style="cursor:pointer" value="{{ team_user.team.teamname }}" onclick="javascript:window.location.href='{% url 'info_page_redirect' %}?teamid={{ team_user.team.id }}'">
+                                        <a class="del_item" href="">X</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="col_rows">
+
+                                <div class="col_edit_item add_item">
+                                    +
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <h5 class="change_pwd_title">修改密码</h5>
+                    <form method="post" action="{% url 'user_info' %}">
+                        <div class="input_group">
+                            {% if error_tip == 2 %}
+                                <div class="input_type_1  error_input">
+                                    <h6 class="col_name">原始密码</h6>
+                                    <input class="col_value"  type="password" name="oldpsw" value="{{ oldpsw }}">
+                                    <i class="error_tip"></i>
+                                    <div class="word_tip">原始密码错误！</div>
+                                </div>
+                            {% else %}
+                                <div class="input_type_1 ">
+                                    <h6 class="col_name">原始密码</h6>
+                                    <input class="col_value"  type="password" name="oldpsw" value="{{ oldpsw }}">
+
+                                </div>
+                            {% endif %}
+
+                            <div class="input_type_1 ">
+                                <h6 class="col_name">新密码</h6>
+                                <input class="col_value" placeholder="" type="password" name="newpsw1" value="{{ newpsw1 }}">
+                            </div>
+                            {% if error_tip == 1 %}
+                                <div class="input_type_1 error_input">
+                                    <h6 class="col_name">确认密码</h6>
+                                    <input class="col_value" placeholder="" type="password" name="newpsw2" value="{{ newpsw2 }}">
+                                    <i class="error_tip"></i>
+                                    <div class="word_tip">密码不一致！</div>
+                                </div>
+                            {% else %}
+                                <div class="input_type_1 ">
+                                    <h6 class="col_name">确认密码</h6>
+                                    <input class="col_value" placeholder="" type="password" name="newpsw2" value="{{ newpsw2 }}">
+                                </div>
+                            {% endif %}
+
+                        </div>
+                        <button class="ok_btn" type="submit">确认修改</button>
+                    </form>
+                </div>
+            </div>
+
+            <!--修改头像-->
+            <div v-show="set_head" class="change_head_container">
+                <div class="wrapper">
+                    <h5 class="">选择您感兴趣的头像</h5>
+                    <div class="head_list">
+                        <ul class="f-cb">
+                            <template v-for="(item, index) in head_icons">
+                                <li v-bind:class="{active: head_flags[index]}" v-bind:style="{'background-image': 'url(imgs/heads/'+item+')'}" @click="switch_head(index)"></li>
+                            </template>
+                        </ul>
+                    </div>
+                    <div>
+                        <button @click="close_set_head" class="cancel_btn btn">取消</button>
+                        <button @click="submit_head" class="ok_btn btn">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src={% static "new/js/user_info.js" %}></script>
+    <script src={% static "new/js/side_bar.js" %}></script>
+    <script src={% static "new/js/SetSiderHeight.js" %}></script>
+{% endblock %}

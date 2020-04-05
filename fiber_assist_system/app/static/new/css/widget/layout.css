@@ -1,0 +1,17 @@
+#container {
+  position: relative;
+}
+.main {
+  overflow: hidden;
+  position: relative;
+}
+.main .main_wrap {
+  width: 98%;
+  color: #42b2ff;
+  position: relative;
+  margin: 10px auto 0;
+}
+.main .content {
+  margin-top: 10px;
+  background: #01144f;
+}

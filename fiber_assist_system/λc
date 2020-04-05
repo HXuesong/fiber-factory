@@ -1,0 +1,36 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="fiber_step_lens_ratio <= 0.017\nmse = 28467.439\nsamples = 1281\nvalue = 1223.23"] ;
+1 [label="计费长度_OVD成品检 <= 1447.5\nmse = 416785.099\nsamples = 37\nvalue = 662.03"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="mse = 151363.27\nsamples = 10\nvalue = 1159.361"] ;
+1 -> 2 ;
+3 [label="fiber_step_lens_ratio <= 0.009\nmse = 389554.356\nsamples = 27\nvalue = 477.833"] ;
+1 -> 3 ;
+4 [label="mse = 287122.085\nsamples = 13\nvalue = 293.31"] ;
+3 -> 4 ;
+5 [label="mse = 423694.781\nsamples = 14\nvalue = 649.176"] ;
+3 -> 5 ;
+6 [label="fiber_step_lens_ratio <= 0.027\nmse = 7271.823\nsamples = 1244\nvalue = 1239.922"] ;
+0 -> 6 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+7 [label="计费长度_OVD成品检 <= 1470.0\nmse = 311570.684\nsamples = 21\nvalue = 991.544"] ;
+6 -> 7 ;
+8 [label="mse = 147570.317\nsamples = 11\nvalue = 1197.796"] ;
+7 -> 8 ;
+9 [label="mse = 393703.42\nsamples = 10\nvalue = 764.666"] ;
+7 -> 9 ;
+10 [label="fiber_step_lens_ratio <= 0.053\nmse = 969.248\nsamples = 1223\nvalue = 1244.187"] ;
+6 -> 10 ;
+11 [label="fiber_step_lens_ratio <= 0.045\nmse = 2981.692\nsamples = 50\nvalue = 1299.431"] ;
+10 -> 11 ;
+12 [label="mse = 3455.877\nsamples = 34\nvalue = 1289.816"] ;
+11 -> 12 ;
+13 [label="mse = 1360.145\nsamples = 16\nvalue = 1319.863"] ;
+11 -> 13 ;
+14 [label="计费长度_OVD成品检 <= 1395.0\nmse = 747.829\nsamples = 1173\nvalue = 1241.832"] ;
+10 -> 14 ;
+15 [label="mse = 566.208\nsamples = 113\nvalue = 1266.222"] ;
+14 -> 15 ;
+16 [label="mse = 697.019\nsamples = 1060\nvalue = 1239.232"] ;
+14 -> 16 ;
+}

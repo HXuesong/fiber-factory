@@ -1,0 +1,118 @@
+.sidebar {
+  //width: 16%;
+  width:215px;
+  margin-top: 1px;
+  float: left;
+  background-color: #01144f;
+  min-height: 500px;
+  position: relative;
+  //margin-right: 1%;
+  .profile {
+    padding: 14px 10px;
+    //background-color: #01144f;
+    .head {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      vertical-align: middle;
+    }
+    .info {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 10px;
+      font-size: 18px;
+      color: #FFFFFF;
+      font-family: "Microsoft YaHei", arial;
+      .authority {
+        margin-top: 15px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .nav {
+    margin-top: 3px;
+    background: #01144f;
+    padding: 3px 10px;
+    //min-height: 600px;
+
+    .m_li {
+      width: 170px;
+      padding: 10px 15px;
+      font-size: 18px;
+      //color: #ffffff;
+      cursor: pointer;
+      a {
+        color: #FFFFFF;
+      }
+      &.active, &:hover {
+        background: #000c3c;
+        a {
+          color: #FFFFFF;
+        }
+      }
+
+      //a{
+      //  display: block;
+      //
+      //}
+      .i_set {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .i_arrow {
+        float: right;
+        //vertical-align: middle;
+        margin-top: 8px;
+      }
+    }
+    .s_li {
+      margin-bottom: 2px;
+    }
+
+    .s_menu {
+      width: 160px;
+      float: right;
+      background: #000c3c;
+      li {
+        text-align: center;
+        padding: 8px 0;
+        margin-top: 3px;
+        a {
+          font-size: 18px;
+          color: #FFFFFF;
+        }
+      }
+      li.active, li:hover {
+        background: url(../imgs/i_nav_active.png) no-repeat center center;
+        background-size: cover;
+        a {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .logout {
+    position: absolute;
+    width: 100px;
+    //margin: 100px auto 0;
+    left: 50%;
+
+    font-size: 18px;
+
+    bottom: 30px;
+    margin-left: -50px;
+    a {
+      vertical-align: middle;
+      color: #FFFFFF;
+    }
+    img {
+      vertical-align: middle;
+    }
+  }
+}

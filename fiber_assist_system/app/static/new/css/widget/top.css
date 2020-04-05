@@ -1,0 +1,42 @@
+.top {
+  width: 100%;
+  background: #01144f;
+  padding: 17px 0;
+}
+.top .left_bar {
+  float: left;
+}
+.top .left_bar .logo {
+  width: 170px;
+  margin-left: 27px;
+}
+.top .left_bar .name {
+  width: 400px;
+  margin-left: 60px;
+}
+.top .left_bar img {
+  vertical-align: middle;
+}
+.top .right_bar {
+  float: right;
+  margin-right: 30px;
+}
+.top .right_bar .bar {
+  height: 50px;
+  display: inline-block;
+  padding: 0 20px;
+  border-left: 1px solid #1c3599;
+  vertical-align: middle;
+}
+.top .right_bar .bar img {
+  width: 35px;
+}
+.top .right_bar .alarm img {
+  margin-top: 3px;
+}
+.top .right_bar .exit {
+  border-right: 1px solid #1c3599;
+}
+.top .right_bar .exit img {
+  margin-top: 10px;
+}

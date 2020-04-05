@@ -1,0 +1,464 @@
+/* reset */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+  margin: 0;
+  padding: 0;
+}
+header,
+footer,
+section,
+article,
+aside,
+nav,
+hgroup,
+address,
+figure,
+figcaption,
+menu,
+details {
+  display: block;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption,
+th {
+  text-align: left;
+  font-weight: normal;
+}
+html,
+body,
+fieldset,
+img,
+iframe,
+abbr {
+  border: 0;
+}
+i,
+cite,
+em,
+var,
+address,
+dfn {
+  font-style: normal;
+}
+[hidefocus],
+summary {
+  outline: 0;
+}
+li {
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+small {
+  font-size: 100%;
+}
+sup,
+sub {
+  font-size: 83%;
+}
+pre,
+code,
+kbd,
+samp {
+  font-family: inherit;
+}
+q:before,
+q:after {
+  content: none;
+}
+textarea {
+  overflow: auto;
+  resize: none;
+}
+label,
+summary {
+  cursor: default;
+}
+a,
+button {
+  cursor: pointer;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+strong,
+b {
+  font-weight: bold;
+}
+del,
+ins,
+u,
+s,
+a,
+a:hover {
+  text-decoration: none;
+}
+body,
+textarea,
+input,
+button,
+select,
+keygen,
+legend {
+  font: 12px/1.14 arial;
+  color: #333;
+  outline: 0;
+}
+/* body {
+  background: #fff;
+} */
+a,
+a:hover {
+  color: #333;
+}
+[v-cloak] {
+  display: none !important;
+}
+/* function */
+.f-cb:after,
+.f-cbli li:after {
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  content: ".";
+}
+.f-cb,
+.f-cbli li {
+  zoom: 1;
+}
+.f-ib {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.f-dn {
+  display: none;
+}
+.f-db {
+  display: block;
+}
+.f-fl {
+  float: left;
+}
+.f-fr {
+  float: right;
+}
+.f-pr {
+  position: relative;
+}
+.f-prz {
+  position: relative;
+  zoom: 1;
+}
+.f-oh {
+  overflow: hidden;
+}
+.f-ff0 {
+  font-family: arial;
+}
+.f-ff1 {
+  font-family: "Microsoft YaHei", arial;
+}
+.f-fs1 {
+  font-size: 12px;
+}
+.f-fs2 {
+  font-size: 14px;
+}
+.f-fwn {
+  font-weight: normal;
+}
+.f-fwb {
+  font-weight: bold;
+}
+.f-tal {
+  text-align: left;
+}
+.f-tac {
+  text-align: center;
+}
+.f-tar {
+  text-align: right;
+}
+.f-taj {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+.f-vam,
+.f-vama * {
+  vertical-align: middle;
+}
+.f-wsn {
+  word-wrap: normal;
+  white-space: nowrap;
+}
+.f-pre {
+  overflow: hidden;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.f-wwb {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.f-ti {
+  overflow: hidden;
+  text-indent: -30000px;
+}
+.f-ti2 {
+  text-indent: 2em;
+}
+.f-lhn {
+  line-height: normal;
+}
+.f-tdu,
+.f-tdu:hover {
+  text-decoration: underline;
+}
+.f-tdn,
+.f-tdn:hover {
+  text-decoration: none;
+}
+.f-toe {
+  overflow: hidden;
+  word-wrap: normal;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.f-csp {
+  cursor: pointer;
+}
+.f-csd {
+  cursor: default;
+}
+.f-csh {
+  cursor: help;
+}
+.f-csm {
+  cursor: move;
+}
+.f-usn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.top {
+  width: 100%;
+  height: 92px;
+  background-color: rgba(40, 32, 85, 0.8);
+  border-bottom: 1px solid #1a5087;
+}
+.top .left_bar {
+  float: left;
+}
+.top .left_bar .logo {
+  width: 170px;
+  margin-left: 27px;
+}
+.top .left_bar .leftLightline {
+  width: 1px;
+  height: 60px;
+  margin-left: 32px;
+}
+.top .title {
+  display: inline-block;
+  margin-left: 30px;
+  margin-top: 30px;
+  width: 630px;
+  height: 40px;
+  font-size: 40px;
+  color: #fdfbfe;
+  font-family: "方正大雅宋_GBK";
+}
+.top .left_bar img {
+  margin-top: 14px;
+}
+.top .right_bar {
+  float: right;
+  margin-right: 40px;
+  margin-top: 30px;
+  width: 380px;
+  height: 40px;
+}
+.right_bar div, .right_bar img {
+  float: left;
+} 
+.alarm img {
+  width: 30px;
+  height: 31px;
+}
+.exit img {
+  margin-left: 30px;
+  margin-top: 6px;
+  width: 30px;
+  height: 25px;
+}
+.rightLightline {
+  margin-left: 50px;
+  margin-top: -14px;
+  width: 1px;
+  height: 60px;
+}
+.userInfo {
+  margin-left: 26px;
+  width: 140px;
+  height: 32px;
+  cursor: pointer;
+}
+.userInfo .userPicture {
+  width: 28px;
+  height: 32px;
+}
+.userInfo .downTriangle {
+  margin-left: 10px;
+  margin-top: 12px;
+  width: 17px;
+  height: 8px;
+}
+.info {
+  margin-left: 10px;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #a6a4b9;
+}
+.logout {
+  margin-left: 40px;
+  width: 30px;
+  height: 31px;
+}
+.sidebar {
+  width: 215px;
+  margin-top: 20px;
+  float: left;
+  min-height: 500px;
+  position: relative;
+  background: rgba(25, 31, 82, 0.5);
+}
+.sidebar .profile {
+  padding: 14px 10px;
+}
+.sidebar .profile .info {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  font-size: 18px;
+  color: #FFFFFF;
+  font-family: "Microsoft YaHei", arial;
+}
+.sidebar .profile .info .authority {
+  margin-top: 15px;
+  font-size: 15px;
+}
+.sidebar .nav {
+  margin-top: 3px;
+  padding: 3px 10px;
+}
+.sidebar .nav .m_li {
+  margin-top: 10px;
+  width: 170px;
+  padding: 10px 15px;
+  font-size: 18px;
+  background: url("../imgs/BasicUserInfo/leftListBac.png") no-repeat;
+}
+.sidebar .nav .m_li a {
+  color: #FFFFFF;
+}
+/* .sidebar .nav .m_li.active,
+.sidebar .nav .m_li:hover {
+  background: #000c3c;
+} */
+.sidebar .nav .m_li.active a,
+.sidebar .nav .m_li:hover a {
+  color: rgba(62, 19, 141, 0.822);
+  font-weight: bold;
+}
+.sidebar .nav .m_li .i_set {
+  display: inline-block;
+  vertical-align: middle;
+}
+.sidebar .nav .m_li .i_arrow {
+  float: right;
+  margin-top: 8px;
+}
+.sidebar .nav .s_li {
+  margin-bottom: 2px;
+}
+.sidebar .nav .s_menu {
+  width: 242px;
+  float: right;
+}
+.sidebar .nav .s_menu li {
+  text-align: center;
+  padding: 8px 0;
+  margin-left: 21px;
+  text-align: left;
+  padding-left: 50px;
+}
+.sidebar .nav .s_menu li a {
+  font-size: 18px;
+  color: #FFFFFF;
+}
+.sidebar .nav .s_menu li.active,
+.sidebar .nav .s_menu li:hover {
+  background: url(../imgs/BasicUserInfo/leftListHover.png) no-repeat center center;
+  background-size: 76% 100%;
+}
+.sidebar .nav .s_menu li.active a,
+.sidebar .nav .s_menu li:hover a {
+  color: #ffffff;
+}
+#container {
+  position: relative;
+}
+body {
+  background: url("../imgs/BasicUserInfo/totalBac.png") no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}

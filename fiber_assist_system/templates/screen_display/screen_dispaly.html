@@ -1,0 +1,904 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>融合大数据与智能算法的光纤工厂</title>
+    <link rel="stylesheet" href="{% static "new/css/screen.css" %}">
+    <script src="{% static "new/js/echarts.js" %}"></script>
+</head>
+
+{#<body>#}
+{#    <div class="header">#}
+{#        <div class="shadows">鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎</div>#}
+{#        <div class="date">#}
+{#            2017年10月12日#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="container">#}
+{#        <div class="side_content left_side">#}
+{#            <div class="large_box">#}
+{#                <p class="title">特征值</p>#}
+{#                <div class="content" id="bestCharacteristicLine">#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="small_box">#}
+{#                <p class="title">断点率</p>#}
+{#                <div class="content" id="breakpointPie">#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="small_box">#}
+{#                <p class="title">最佳特征值</p>#}
+{#                <div class="content" id="characteristicBar">#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="central_content">#}
+{#            <div class="ProduceProcess">#}
+{#                <img src="{% static "new/imgs/screen/arrow_left.gif"  %}" alt="" class="arrow arrow_left">#}
+{#                <img src="{% static "new/imgs/screen/arrow_right.gif" %}" alt="" class="arrow arrow_right1">#}
+{#                <img src="{% static "new/imgs/screen/arrow_right.gif" %}" alt="" class="arrow arrow_right2">#}
+{#                <img src="{% static "new/imgs/screen/equipment1.png"  %}" alt="" class="equipt1">#}
+{#                <img src="{% static "new/imgs/screen/equipment2.png" %}" alt="" class="equipt2">#}
+{#                <img src="{% static "new/imgs/screen/equipment3.png" %} " alt="" class="equipt3">#}
+{#                <img src="{% static "new/imgs/screen/equipment4.png" %}" alt="" class="equipt4">#}
+{#                <img src="{% static "new/imgs/screen/equipment5.png" %}" alt="" class="equipt5">#}
+{#                <img src="{% static "new/imgs/screen/equipment6.png"  %}" alt="" class="equipt6">#}
+{#                <img src="{% static "new/imgs/screen/equipment7.png" %}" alt="" class="equipt7">#}
+{#                <img src="{% static "new/imgs/screen/equipment8.png" %}" alt="" class="equipt8">#}
+{#                <img src="{% static "new/imgs/screen/equipment9.png" %}" alt="" class="equipt9">#}
+{#                <img src="{% static "new/imgs/screen/equipment10.png" %}" alt="" class="equipt10">#}
+{#                <img src="{% static "new/imgs/screen/equipment11.png" %}" alt="" class="equipt11">#}
+{#                <img src="{% static "new/imgs/screen/equipment12.png" %}" alt="" class="equipt12">#}
+{#                <img src="{% static "new/imgs/screen/equipment13.png" %}" alt="" class="equipt13">#}
+{#                <img src="{% static "new/imgs/screen/equipment14.png" %}" alt="" class="equipt14">#}
+{#            </div>#}
+{#            <div class="central_bottom"></div>#}
+{#        </div>#}
+{#        <div class="side_content right_side">#}
+{#            <div class="large_box">#}
+{#                <p class="title">重要指标预测</p>#}
+{#                 <div class="content">#}
+{#                    <div id="titleDiv" style="padding-top: 30px;">#}
+{#                        <table id='title' border="0" cellpadding="0" cellspacing="0" bordercolor="4FBFF9">#}
+{#                            <tr>#}
+{#                                <td style="color:yellow"></td>#}
+{#                                <td style="color:yellow"></td>#}
+{#                                <td style="color:yellow"></td>#}
+{#                                <td style="color:yellow"></td>#}
+{#                            </tr>#}
+{#                        </table>#}
+{#                    </div>#}
+{#                    <div id="demo" style="overflow: hidden; height: 200px;">#}
+{#                        <div id="demo1">#}
+{#                            <table id='data' align="center" cellpadding="0" cellspacing="0">#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                    <td></td>#}
+{#                                </tr>#}
+{#                            </table>#}
+{#                        </div>#}
+{#                        <div id="demo2"></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="small_box">#}
+{#                <p class="title">合格率</p>#}
+{#                <div class="content" id="qualificationLine">#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="small_box">#}
+{#                <p class="title">阶段产能</p>#}
+{#                <div class="content">#}
+{#                    <div class="content" id="flowChart">#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</body>#}
+
+
+<body>
+
+    <header>
+
+        <div class="leftTop"></div>
+
+        <!-- 顶部标题 -->
+        <div class="headTitle">
+
+            <p>融合大数据与智能算法的光纤工厂</p>
+
+        </div>
+
+        <div class="rightTop"></div>
+
+    </header>
+
+    <!-- 图表正文 -->
+
+    <article>
+
+        <div class="artile-box">
+            
+            <!-- 左栏 -->
+            <div class="leftPart">
+
+                <!-- 时间显示 -->
+                <div class="dateInfo">
+
+                    <div class="time-title">
+                        <span class="title-CN">时间</span>
+                        <span class="title-En">Time</span>
+                    </div>
+
+                    <div class="dateNYR"></div>
+
+                    <div class="displayTime">
+
+                        <span class="numBac1"></span>
+                        <span class="numBac2"></span>
+                        <span class="numDot">:</span>
+                        <span class="numBac3"></span>
+                        <span class="numBac4"></span>
+
+                    </div>
+
+                </div>
+
+                <!-- 最佳特征值 -->
+                <div class="zuiJTZ">
+
+                    <!-- 图表标题 -->
+                    <div class="zuiJTZ-title">
+
+                        <span class="title-CN">最佳特征值</span>
+                        <span class="title-En">Optimum eigenvalue</span>
+
+                    </div>
+
+                    <div class="content1">
+                        <div id="characteristicBar"></div>
+                    </div>
+
+                </div>
+
+                <!-- 阶段产能 -->
+                <div class="jieDCN">
+
+                    <!-- 图表标题 -->
+                    <div class="jieDCN-title">
+
+                        <span class="title-CN">阶段产能</span>
+                        <span class="title-En">Stage capacity</span>
+
+                    </div>
+                <div class="content2">
+                    <div id="flowChart"></div>
+                </div>
+        
+                </div>
+
+            </div>
+
+            <!-- 中栏 -->
+            <div class="centerPart">
+
+                <!-- 流程线 -->
+                <div class="processLine">
+
+                    <div class="line"></div>
+
+                </div>
+
+                <!-- 合格率分析 -->
+                <div class="heGLFX">
+
+                    <!-- 图表标题 -->
+                    <div class="heGLFX-title">
+
+                        <span class="title-CN">合格率分析</span>
+                        <span class="title-En">Qualification rate analysis</span>
+
+                    </div>
+
+                    <div class="content3">
+                        <div id="qualificationLine"></div>
+                    </div>
+        
+                </div>
+
+                <!-- 断点率分析 -->
+                <div class="duanDL">
+
+                    <!-- 图表标题 -->
+                    <div class="duanDL-title">
+
+                        <span class="title-CN">断点率分析</span>
+                        <span class="title-En">Breakpoint rate analysis</span>
+
+                    </div>
+
+                    <div class="content4">
+                        <div id="breakpointPie"></div>
+                    </div>
+            
+                </div>
+
+            </div>
+
+            <!-- 右栏 -->
+
+            <div class="rightPart">
+
+                <!-- 关键参数智能预测 -->
+                <div class="guanJZNYC">
+
+                    <!-- 图表标题 -->
+                    <div class="guanJZNYC-title">
+
+                        <span class="title-CN">关键参数智能预测</span>
+                        <span class="title-En">Intelligent prediction of key parameters</span>
+
+                    </div>
+
+                    <div class="content5">
+                        <div id="titleDiv" style="padding-top: 10px;">
+                            <table id='title' border="0" cellpadding="0" cellspacing="0" bordercolor="4FBFF9">
+                                <tr>
+                                    <td style="padding-left: 48px; color:rgb(44, 135, 255);"></td>
+                                    <td style="color:rgb(44, 135, 255);"></td>
+                                    <td style="color:rgb(44, 135, 255);"></td>
+                                    <td style="color:rgb(44, 135, 255);"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- <div class="content5"> -->
+                            <div id="demo" style="overflow: hidden; height: 350px; margin-top: 10px">
+                                <div id="demo1">
+                                    <table id='data' align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="demo2"></div>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+            
+                </div>
+
+                <!-- 特征值拟合 -->
+                <div class="teZZNH">
+
+                    <!-- 图表标题 -->
+                    <div class="teZZNH-title">
+
+                        <span class="title-CN">特征值拟合</span>
+                        <span class="title-En">Eigenvalue fitting</span>
+
+                    </div>
+
+                    <div class="content6">
+                        <div id="bestCharacteristicLine"></div>
+                    </div>
+            
+                </div>
+
+            </div>
+
+        </div>
+    </article>
+
+    <!-- 底部 -->
+
+    <footer>
+
+        <div class="leftBottom"></div>
+
+        <div class="rightBottom"></div>
+
+    </footer>
+
+
+
+
+    <!-- <div class="mask"></div>
+    <div class="equipment_info">
+        <div class="ghost_box">
+            <span class="close_info">
+                 ✘
+            </span>
+            <div class="border_box tl"></div>
+            <div class="border_box tr"></div>
+            <div class="border_box bl"></div>
+            <div class="border_box br"></div>
+            <h1 class="e_title">VAD沉积</h1>
+            <div class="left_part">
+                <div class="info_back">
+                    <img src="images/equipment1.png" alt="" class="equipment_img">
+                </div>
+            </div>
+            <div class="right_part">
+                在1000-1600°C的温度下向soot体预制
+                棒通入a2和He等工艺气体，从而出去其
+                中羟基和金属杂质并将其烧结成透明的
+                VAD母棒。
+            </div>
+        </div>
+    </div> -->
+    
+    
+    <!-- <div class="small_box">
+        <div class="shadows" style="user-select: none;">鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎鼎</div>
+        <div class="date"></div>
+    </div>
+
+
+    <div class="container">
+
+        <select id="speedSelect">
+            <option value="200">快</option>
+            <option value="5000"  selected = "selected">慢</option>
+        </select>
+
+         <span id="speed" style="display: none"></span>
+
+        <div class="side_content left_side">
+
+            <div class="large_box">
+                <p class="title">特征值拟合</p>
+                <div class="content" id="bestCharacteristicLine">
+
+                </div>
+            </div>
+            
+            <div class="small_box">
+                <p class="title">断点率分析</p>
+                <div class="content" id="breakpointPie">
+
+                </div>
+            </div>
+
+            <div class="small_box">
+                <p class="title">最佳特征值</p>
+                <div class="content" id="characteristicBar">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="central_content">
+            <div class="information_box">
+                <p class="inform_content">光纤制备大数据辅助决策系统</p>
+            </div>
+
+            <div class="ProduceProcess">
+{#                <img src="{% static "new/imgs/screen/arrow_left.gif"  %}" alt="" class="arrow arrow_left">#}
+{#                <img src="{% static "new/imgs/screen/arrow_right.gif" %}" alt="" class="arrow arrow_right1">#}
+{#                <img src="{% static "new/imgs/screen/arrow_right.gif" %}" alt="" class="arrow arrow_right2">#}
+                <img src="{% static "new/imgs/screen/equipment1.png"  %}" alt="" class="equipt1 equipt">
+                <img src="{% static "new/imgs/screen/equipment2.png" %}" alt="" class="equipt2 equipt">
+                <img src="{% static "new/imgs/screen/equipment3.png" %} " alt="" class="equipt3 equipt">
+                <img src="{% static "new/imgs/screen/equipment4.png" %}" alt="" class="equipt4 equipt">
+                <img src="{% static "new/imgs/screen/equipment5.png" %}" alt="" class="equipt5 equipt">
+                <img src="{% static "new/imgs/screen/equipment6.png"  %}" alt="" class="equipt6 equipt">
+                <img src="{% static "new/imgs/screen/equipment7.png" %}" alt="" class="equipt7 equipt">
+                <img src="{% static "new/imgs/screen/equipment8.png" %}" alt="" class="equipt8 equipt">
+                <img src="{% static "new/imgs/screen/equipment9.png" %}" alt="" class="equipt9 equipt">
+                <img src="{% static "new/imgs/screen/equipment10.png" %}" alt="" class="equipt10 equipt">
+                <img src="{% static "new/imgs/screen/equipment11.png" %}" alt="" class="equipt11 equipt">
+                <img src="{% static "new/imgs/screen/equipment12.png" %}" alt="" class="equipt12 equipt">
+                <img src="{% static "new/imgs/screen/equipment13.png" %}" alt="" class="equipt13 equipt">
+                <img src="{% static "new/imgs/screen/equipment14.png" %}" alt="" class="equipt14 equipt">
+            </div>
+
+            <div class="central_bottom"></div>
+        </div>
+
+        <div class="side_content right_side">
+            <div class="large_box">
+                <p class="title"> 关键参数智能预测</p>
+                <div class="content">
+                    <div id="titleDiv" style="padding-top: 10px;">
+                        <table id='title' border="0" cellpadding="0" cellspacing="0" bordercolor="4FBFF9">
+                            <tr>
+                                <td style="color:yellow"></td>
+                                <td style="color:yellow"></td>
+                                <td style="color:yellow"></td>
+                                <td style="color:yellow"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="demo" style="overflow: hidden; height: 250px;">
+                        <div id="demo1">
+                            <table id='data' align="center" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="demo2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="small_box">
+                <p class="title">合格率分析</p>
+                <div class="content" id="qualificationLine">
+
+                </div>
+            </div>
+            <div class="small_box">
+                <p class="title">阶段产能</p>
+                <div class="content">
+                    <div class="content" id="flowChart">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> -->
+
+</body>
+
+<script type="text/javascript" src="{% static "new/js/jquery-3.2.1.min.js" %}" ></script>
+
+<script type="text/javascript" src="{% static "new/js/echartsDemo/characteristicBar.js" %}"></script>.
+<script type="text/javascript" src="{% static "new/js/echartsDemo/qualificationLine.js" %}"></script>.
+<script type="text/javascript" src="{% static "new/js/echartsDemo/flowChart.js" %}"></script>.
+<script type="text/javascript" src={% static "new/js/echartsDemo/breakpointPie.js" %}></script>.
+<script type="text/javascript" src={% static "new/js/echartsDemo/bestCharacteristicLine.js" %}></script>.
+<script type="text/javascript" src={% static "new/js/echartsDemo/table.js" %}></script>.
+<script type="text/javascript" src={% static "new/js/echartsDemo/time.js" %}></script>.
+
+<!-- <script src={% static "new/js/echartsDemo/information.js" %}></script> -->
+</html>
